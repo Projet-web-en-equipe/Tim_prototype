@@ -63,7 +63,7 @@ canvas.addEventListener("click", (event) =>{
   }
   listePoints.forEach((point) =>{
       if(intersecte(pos, point) && listePoints.indexOf(point) != perso.pos){
-         cheminPerso = trouverChemin(listePoints.indexOf(point));
+        cheminPerso = trouverCheminMieux(listePoints.indexOf(point));
         enMouvement = true;
       }
   })
@@ -105,13 +105,41 @@ function trouverChemin(nouvellePosition){
   return chemin;
 }
 
+function trouverCheminMieux(nouvellePosition){
+  var cheminGauche = [];
+  var futurPosGauche = perso.pos;
+  var cheminDroite = [];
+  var futurPosDroite = perso.pos;
+  while(futurPosGauche != nouvellePosition){
+    futurPosGauche++;
+    if(futurPosGauche >= listePoints.length){
+      futurPosGauche = 0;
+    }
+    cheminGauche.push(futurPosGauche);
+  }
+  while (futurPosDroite != nouvellePosition){
+    futurPosDroite--;
+    if(futurPosDroite < 0){
+      futurPosDroite = listePoints.length - 1
+    }
+    cheminDroite.push(futurPosDroite);
+  }
+  if(cheminGauche.length < cheminDroite.length || cheminGauche.length == cheminDroite.length){
+    return cheminGauche;
+  } else if(cheminGauche.length > cheminDroite.length){
+    return cheminDroite;
+  }
+}
+
+//fonction qui fait bouger les x et y du perso selon sa destination
 function bougerPerso(){
-  console.log(perso.pos);
+  //trouver si le perso doit se deplacer a gauche ou a droite
   if(listePoints[perso.pos].x < listePoints[cheminPerso[destination]].x){
     perso.x += perso.vitesse;
   } else {
     perso.x -= perso.vitesse;
   }
+  //faire monter ou descendre le perso selon une fonction lineaire pour qu'ils arrivent au point au meme moment
   perso.y = trouverFonctionA(
     listePoints[perso.pos].x, 
     listePoints[perso.pos].y, 
@@ -122,19 +150,23 @@ function bougerPerso(){
       listePoints[perso.pos].y, 
       listePoints[cheminPerso[destination]].x, 
       listePoints[cheminPerso[destination]].y
-    );
-    if(perso.x == Math.round(listePoints[cheminPerso[destination]].x) && perso.y == Math.round(listePoints[cheminPerso[destination]].y)){
-      perso.pos = cheminPerso[destination];
-      perso.x = listePoints[cheminPerso[destination]].x;
-      perso.y = listePoints[cheminPerso[destination]].y;
-      console.log(perso.pos);
-      if(cheminPerso[cheminPerso.length-1] == perso.pos){
-        enMouvement = false;
-        destination = 0
-      } else{
-        destination += 1;
-      }
+  );
+  //si le perso est arriver a sa premiere destination:
+  if(perso.x == Math.round(listePoints[cheminPerso[destination]].x)
+     && perso.y == Math.round(listePoints[cheminPerso[destination]].y)){
+    //faire que la pos du perso est la meme que le point
+    perso.pos = cheminPerso[destination];
+    //s'assurer que les coords du perso soient les meme que celle du point
+    perso.x = listePoints[cheminPerso[destination]].x;
+    perso.y = listePoints[cheminPerso[destination]].y;
+    //si le perso est au bon point:
+    if(cheminPerso[cheminPerso.length-1] == perso.pos){
+      enMouvement = false;
+      destination = 0
+     } else { //sinon il se deplace a un point supplementaire
+      destination += 1;
     }
+  }
 };
 
 //fonction pour detecter un click dans un cercle
