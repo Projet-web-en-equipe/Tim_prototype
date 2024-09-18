@@ -63,7 +63,7 @@ canvas.addEventListener("click", (event) =>{
   }
   listePoints.forEach((point) =>{
       if(intersecte(pos, point) && listePoints.indexOf(point) != perso.pos){
-        cheminPerso = trouverCheminMieux(listePoints.indexOf(point));
+        cheminPerso = trouverChemin(listePoints.indexOf(point));
         enMouvement = true;
       }
   })
@@ -93,23 +93,13 @@ function renderer() {
 }
 
 function trouverChemin(nouvellePosition){
-  var chemin = [];
-  var futurPos = perso.pos;
-  while(futurPos != nouvellePosition){
-    futurPos++
-    if(futurPos >= listePoints.length){
-      futurPos = 0;
-    }
-    chemin.push(futurPos);
-  }
-  return chemin;
-}
-
-function trouverCheminMieux(nouvellePosition){
+  //declarer les variables pour checker clockwise
   var cheminGauche = [];
   var futurPosGauche = perso.pos;
+  //et les var counter-clockwise
   var cheminDroite = [];
   var futurPosDroite = perso.pos;
+  //accumuler le nbr de move pour arriver a destination clockwise
   while(futurPosGauche != nouvellePosition){
     futurPosGauche++;
     if(futurPosGauche >= listePoints.length){
@@ -117,6 +107,7 @@ function trouverCheminMieux(nouvellePosition){
     }
     cheminGauche.push(futurPosGauche);
   }
+  //accumuler le nbr de move pour arriver a destination counter-clockwise
   while (futurPosDroite != nouvellePosition){
     futurPosDroite--;
     if(futurPosDroite < 0){
@@ -124,6 +115,7 @@ function trouverCheminMieux(nouvellePosition){
     }
     cheminDroite.push(futurPosDroite);
   }
+  //comparer les deux pour retourner celui qui est le plus petit (sils sont egaux clockwise va gagner)
   if(cheminGauche.length < cheminDroite.length || cheminGauche.length == cheminDroite.length){
     return cheminGauche;
   } else if(cheminGauche.length > cheminDroite.length){
