@@ -36,7 +36,7 @@ var perso = {
   y: 350,
   largeur: 50,
   hauteur: 50,
-  vitesse: 3,
+  vitesse: 5,
   pos: 0,
 };
 perso.img.src = perso.urlImage;
@@ -54,6 +54,7 @@ var render = setInterval(renderer, 1000 / 60);
 var isGuide = true;
 var enMouvement = false;
 var cheminPerso = []
+var destination = 0;
 //detecter les clicks
 canvas.addEventListener("click", (event) =>{
   const pos = {
@@ -62,7 +63,7 @@ canvas.addEventListener("click", (event) =>{
   }
   listePoints.forEach((point) =>{
       if(intersecte(pos, point) && listePoints.indexOf(point) != perso.pos){
-        cheminPerso = trouverChemin(listePoints.indexOf(point));
+         cheminPerso = trouverChemin(listePoints.indexOf(point));
         enMouvement = true;
       }
   })
@@ -91,11 +92,6 @@ function renderer() {
   }
 }
 
-//fonction pour detecter un click dans un cercle
-function intersecte(click, cercle){
-  return Math.sqrt((click.x-(cercle.x)) ** 2 + (click.y - (cercle.y)) ** 2) < cercle.rayon;
-}
-
 function trouverChemin(nouvellePosition){
   var chemin = [];
   var futurPos = perso.pos;
@@ -106,13 +102,16 @@ function trouverChemin(nouvellePosition){
     }
     chemin.push(futurPos);
   }
-  console.log(chemin);
   return chemin;
 }
 
 function bougerPerso(){
-  destination = 0;
-  perso.x += perso.vitesse;
+  console.log(perso.pos);
+  if(listePoints[perso.pos].x < listePoints[cheminPerso[destination]].x){
+    perso.x += perso.vitesse;
+  } else {
+    perso.x -= perso.vitesse;
+  }
   perso.y = trouverFonctionA(
     listePoints[perso.pos].x, 
     listePoints[perso.pos].y, 
@@ -124,11 +123,24 @@ function bougerPerso(){
       listePoints[cheminPerso[destination]].x, 
       listePoints[cheminPerso[destination]].y
     );
-  if(perso.x >= listePoints[cheminPerso[destination]].x){
-    destination += 1
-    console.log(destination);
-  }
+    if(perso.x == Math.round(listePoints[cheminPerso[destination]].x) && perso.y == Math.round(listePoints[cheminPerso[destination]].y)){
+      perso.pos = cheminPerso[destination];
+      perso.x = listePoints[cheminPerso[destination]].x;
+      perso.y = listePoints[cheminPerso[destination]].y;
+      console.log(perso.pos);
+      if(cheminPerso[cheminPerso.length-1] == perso.pos){
+        enMouvement = false;
+        destination = 0
+      } else{
+        destination += 1;
+      }
+    }
 };
+
+//fonction pour detecter un click dans un cercle
+function intersecte(click, cercle){
+  return Math.sqrt((click.x-(cercle.x)) ** 2 + (click.y - (cercle.y)) ** 2) < cercle.rayon;
+}
 
 //fonction pour trouver le a dans la fonction lineaire d'une collision
 function trouverFonctionA(cx1, cy1, cx2, cy2) {
