@@ -1,0 +1,11 @@
+body {
+  width: 98vw;
+  height: 98vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+canvas {
+  background-image: url("medias/decor.png");
+  border: 3px solid black;
+}
