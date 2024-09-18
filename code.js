@@ -27,6 +27,12 @@ var listePoints = [
     rayon: 13,
     couleur: "rgb(255, 0, 0)"
   },
+  {
+    x: 500,
+    y: 250,
+    rayon: 13,
+    couleur: "rgb(255, 0, 0)"
+  },
 ]
 //variable du personnage
 var perso = {
@@ -144,8 +150,7 @@ function bougerPerso(){
       listePoints[cheminPerso[destination]].y
   );
   //si le perso est arriver a sa premiere destination:
-  if(perso.x == Math.round(listePoints[cheminPerso[destination]].x)
-     && perso.y == Math.round(listePoints[cheminPerso[destination]].y)){
+  if(arriveAuPoint(perso, listePoints[cheminPerso[destination]])){
     //faire que la pos du perso est la meme que le point
     perso.pos = cheminPerso[destination];
     //s'assurer que les coords du perso soient les meme que celle du point
@@ -164,6 +169,11 @@ function bougerPerso(){
 //fonction pour detecter un click dans un cercle
 function intersecte(click, cercle){
   return Math.sqrt((click.x-(cercle.x)) ** 2 + (click.y - (cercle.y)) ** 2) < cercle.rayon;
+}
+
+//fonction pour detecter quand le perso est assez proche du point pour l'arreter
+function arriveAuPoint(perso, cercle){
+  return Math.sqrt((perso.x-(cercle.x)) ** 2 + (perso.y - (cercle.y)) ** 2) < 3;
 }
 
 //fonction pour trouver le a dans la fonction lineaire d'une collision
