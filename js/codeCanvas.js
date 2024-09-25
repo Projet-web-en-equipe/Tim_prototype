@@ -8,36 +8,42 @@ var listePoints = [
     y: 150,
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
+    tag: "Projets",
   },
   {
     x: 650,
     y: 300,
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
+    tag: "Cours",
   },
   {
     x: 600,
     y: 500,
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
+    tag: "Profs",
   },
   {
     x: 400,
     y: 700,
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
+    tag: "Emplois",
   },
   {
     x: 150,
     y: 550,
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
+    tag: "Évènements",
   },
   {
     x: 250,
     y: 250,
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
+    tag: "Vie étudiante",
   },
 ];
 //variable du personnage
@@ -63,23 +69,10 @@ var guide = {
 guide.img.src = guide.urlImage;
 /////////prog pour que le l'ile fonctionne/////////
 var render = setInterval(renderer, 1000 / 60);
-var isGuide = true;
+var isGuide = false;
 var enMouvement = false;
 var cheminPerso = [];
 var destination = 0;
-//detecter les clicks
-canvas.addEventListener("click", (event) => {
-  const pos = {
-    x: event.clientX - canvas.offsetLeft,
-    y: event.clientY - canvas.offsetTop,
-  };
-  listePoints.forEach((point) => {
-    if (intersecte(pos, point) && listePoints.indexOf(point) != perso.pos) {
-      cheminPerso = trouverChemin(listePoints.indexOf(point));
-      enMouvement = true;
-    }
-  });
-});
 
 //fonction qui render l'ile
 function renderer() {
@@ -92,6 +85,11 @@ function renderer() {
     ctx.fillStyle = circle.couleur;
     ctx.fill();
   });
+  //dessiner tous les tags des points
+  listePoints.forEach((circle) => {
+    ctx.font = "30px sans-serif";
+    ctx.fillText(circle.tag, circle.x - ((circle.tag.replace(" ", "")).length * 7.5), circle.y - 30)
+  })
   //dessiner perso
   ctx.drawImage(
     perso.img,
@@ -107,6 +105,20 @@ function renderer() {
     bougerPerso();
   }
 }
+
+//detecter les clicks
+canvas.addEventListener("click", (event) => {
+  const pos = {
+    x: event.clientX - canvas.offsetLeft,
+    y: event.clientY - canvas.offsetTop,
+  };
+  listePoints.forEach((point) => {
+    if (intersecte(pos, point) && listePoints.indexOf(point) != perso.pos) {
+      cheminPerso = trouverChemin(listePoints.indexOf(point));
+      enMouvement = true;
+    }
+  });
+});
 
 function trouverChemin(nouvellePosition) {
   //declarer les variables pour checker clockwise
