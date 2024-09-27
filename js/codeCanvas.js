@@ -88,8 +88,12 @@ function renderer() {
   //dessiner tous les tags des points
   listePoints.forEach((circle) => {
     ctx.font = "30px sans-serif";
-    ctx.fillText(circle.tag, circle.x - ((circle.tag.replace(" ", "")).length * 7.5), circle.y - 30)
-  })
+    ctx.fillText(
+      circle.tag,
+      circle.x - circle.tag.replace(" ", "").length * 7.5,
+      circle.y - 30
+    );
+  });
   //dessiner perso
   ctx.drawImage(
     perso.img,
@@ -113,9 +117,13 @@ canvas.addEventListener("click", (event) => {
     y: event.clientY - canvas.offsetTop,
   };
   listePoints.forEach((point) => {
-    if (intersecte(pos, point) && listePoints.indexOf(point) != perso.pos) {
-      cheminPerso = trouverChemin(listePoints.indexOf(point));
-      enMouvement = true;
+    if (intersecte(pos, point)) {
+      if (listePoints.indexOf(point) == perso.pos) {
+        window.location.href = "/placeholder.html";
+      } else {
+        cheminPerso = trouverChemin(listePoints.indexOf(point));
+        enMouvement = true;
+      }
     }
   });
 });
