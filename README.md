@@ -1,6 +1,6 @@
 # Tim_prototype
 
-## canvas -
+## canvas
 
 - le canvas est completer: le perso peut bouger entre les points du canvas
 - le perso detectera le chemin qu'il devra utiliser le moins de points pour y acceder (sens horaire ou anti-horaire)
@@ -22,4 +22,4 @@
 
 ## changer de page
 
-- j'ai mis lèendroit pour
+- tout est dans le placeholder :)
