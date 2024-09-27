@@ -119,7 +119,7 @@ canvas.addEventListener("click", (event) => {
   listePoints.forEach((point) => {
     if (intersecte(pos, point)) {
       if (listePoints.indexOf(point) == perso.pos) {
-        window.location.href = "/placeholder.html";
+        changerPage("/placeholder.html");
       } else {
         cheminPerso = trouverChemin(listePoints.indexOf(point));
         enMouvement = true;
@@ -218,6 +218,11 @@ function bougerPerso() {
       destination += 1;
     }
   }
+}
+
+//fonction changer de page
+function changerPage(url) {
+  window.location.href = url;
 }
 
 //fonction pour detecter un click dans un cercle
