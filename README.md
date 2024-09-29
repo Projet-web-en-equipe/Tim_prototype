@@ -23,3 +23,12 @@
 ## changer de page
 
 - tout est dans le placeholder :)
+
+## Maquette 
+
+- Les versions mobile, tablette et pc fonctionne
+- menu apparait par la gauche 
+- le button TIM en haut a droite est pour aller vers la page d'accueille
+- quand on clique sur un des placeHolder on peut voir une section info apparaitre du bas vers le haut
+- la section info peut être fermer par un "x" qui est en haut a droite 
+

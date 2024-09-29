@@ -1,0 +1,56 @@
+h1,
+h2,
+p {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+}
+img{
+    -webkit-user-drag: none;
+}
+section#info h1,
+section#info p {
+    color: black;
+}
+
+header ul {
+    font-size: 1.5rem;
+    color: black;
+}
+
+header ul li a {
+    color: black;
+    transition: color 0.3s ease;
+
+    &:active {
+        color: purple;
+    }
+
+    &:focus {
+        color: purple;
+    }
+
+    &:hover {
+        color: purple;
+    }
+}
+
+/* Désactive le scroll sur la page principale */
+.no-scroll {
+    overflow: hidden;
+}
+
+/* Pour les tablettes */
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+    header ul {
+        font-size: 3rem;
+    }
+}
+
+/* Pour les ordinateurs de bureau */
+@media only screen and (min-width: 1025px) {
+    header ul {
+        font-size: 1.5rem;
+    }
+}

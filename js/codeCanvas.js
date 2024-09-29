@@ -119,7 +119,7 @@ canvas.addEventListener("click", (event) => {
   listePoints.forEach((point) => {
     if (intersecte(pos, point)) {
       if (listePoints.indexOf(point) == perso.pos) {
-        changerPage("/placeholder.html");
+        changerPage("/maquette.html");
       } else {
         cheminPerso = trouverChemin(listePoints.indexOf(point));
         enMouvement = true;

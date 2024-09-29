@@ -1,0 +1,11 @@
+div#logo a {
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    position: absolute;
+    right: 1.5rem;
+    z-index: 4;
+}

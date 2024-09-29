@@ -1,0 +1,62 @@
+main section#carrousel {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+main section .banniere {
+    position: relative;
+    width: 50vw;
+    
+}
+
+main section img {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+}
+
+main section h2 {
+    background-color: rgba(65, 65, 65, 0.521);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0.5rem 0;
+    text-align: center;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    /* color: white; */
+}
+
+/* Pour les tablettes */
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+    main section h2 {
+        font-size: 3rem;
+    }
+}
+
+/* Pour les ordinateurs de bureau */
+@media only screen and (min-width: 1025px) {
+    main section h2 {
+        font-size: 2rem;
+    }
+
+    main section#carrousel {
+        padding: 2rem;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 3rem;
+        justify-content: center;
+        max-width: 60vw; /* Limite la largeur pour afficher 3 éléments par rangée */
+    }
+
+    main section .banniere {
+        position: relative;
+        width: 15vw;
+        margin: 0 auto;
+    }
+}
