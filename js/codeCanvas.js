@@ -49,7 +49,7 @@ var listePoints = [
 //variable du personnage
 var perso = {
   img: new Image(),
-  urlImage: "medias/inshallah0.png",
+  urlImage: "medias/inshallah5.png",
   x: 0,
   y: 0,
   largeur: 50,
@@ -164,6 +164,13 @@ function trouverChemin(nouvellePosition) {
 
 //fonction qui fait bouger les x et y du perso selon sa destination
 function bougerPerso() {
+  //trouver la direction du perso pour changer son modele
+  trouverDirection(
+    listePoints[perso.pos].x,
+    listePoints[perso.pos].y,
+    listePoints[cheminPerso[destination]].x,
+    listePoints[cheminPerso[destination]].y
+  );
   //trouver si le perso doit se deplacer a gauche ou a droite
   //et calculer l'angle de la fonction pour que la vitesse reste constante
   if (listePoints[perso.pos].x < listePoints[cheminPerso[destination]].x) {
@@ -213,11 +220,49 @@ function bougerPerso() {
     if (cheminPerso[cheminPerso.length - 1] == perso.pos) {
       enMouvement = false;
       destination = 0;
+      //on lui redonne le sprite idle
+      perso.urlImage = "medias/inshallah5.png";
+      perso.img.src = perso.urlImage;
     } else {
       //sinon il se deplace a un point supplementaire
       destination += 1;
     }
   }
+}
+
+function trouverDirection(cx1, cy1, cx2, cy2) {
+  //trouver la direction du personnage
+  var haut = false;
+  var gauche = false;
+  var angle = trouverAngle(cx1, cy1, cx2, cy2);
+  if (listePoints[perso.pos].x > listePoints[cheminPerso[destination]].x) {
+    gauche = true;
+  } else {
+    gauche = false;
+  }
+  if (listePoints[perso.pos].y > listePoints[cheminPerso[destination]].y) {
+    haut = true;
+  } else {
+    haut = false;
+  }
+  if (!haut && gauche && angle > 10) {
+    perso.urlImage = "medias/inshallah1.png";
+  } else if (!haut && angle < 10) {
+    perso.urlImage = "medias/inshallah2.png";
+  } else if (!haut && !gauche && angle > 10) {
+    perso.urlImage = "medias/inshallah3.png";
+  } else if (gauche && angle < 10) {
+    perso.urlImage = "medias/inshallah4.png";
+  } else if (!gauche && angle < 10) {
+    perso.urlImage = "medias/inshallah6.png";
+  } else if (gauche && haut && angle > 10) {
+    perso.urlImage = "medias/inshallah7.png";
+  } else if (haut && angle < 10) {
+    perso.urlImage = "medias/inshallah8.png";
+  } else if (!gauche && haut && angle > 10) {
+    perso.urlImage = "medias/inshallah9.png";
+  }
+  perso.img.src = perso.urlImage;
 }
 
 //fonction changer de page
