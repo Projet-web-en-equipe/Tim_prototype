@@ -49,7 +49,7 @@ var listePoints = [
 //variable du personnage
 var perso = {
   img: new Image(),
-  urlImage: "medias/inshallah.png",
+  urlImage: "medias/inshallah0.png",
   x: 0,
   y: 0,
   largeur: 50,
