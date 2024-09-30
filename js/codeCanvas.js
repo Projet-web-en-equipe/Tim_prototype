@@ -73,6 +73,8 @@ var isGuide = false;
 var enMouvement = false;
 var cheminPerso = [];
 var destination = 0;
+//TEST
+// var vPoint = 2;
 
 //fonction qui render l'ile
 function renderer() {
@@ -108,6 +110,13 @@ function renderer() {
   if (enMouvement) {
     bougerPerso();
   }
+  //TEST changer deplacement point 1
+  // if (listePoints[1].x == 800) {
+  //   vPoint = -2;
+  // } else if (listePoints[1].x == 500) {
+  //   vPoint = 2;
+  // }
+  // listePoints[1].x += vPoint;
 }
 
 //detecter les clicks

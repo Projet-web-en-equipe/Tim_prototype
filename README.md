@@ -20,15 +20,20 @@
 - (how? idk mais ca marche seulement quand le cell est a l'horizontal)
 - plus de bugtest dans le futur sera necessaire
 
-## changer de page
+## Animation perso
 
-- tout est dans le placeholder :)
+- le site est capable de detecter la direction dans laquelle le perso va
+- il manquera juste a rajouter les spritesheets officiels
 
-## Maquette 
+## Maquette
 
 - Les versions mobile, tablette et pc fonctionne
-- menu apparait par la gauche 
+- menu apparait par la gauche
 - le button TIM en haut a droite est pour aller vers la page d'accueille
 - quand on clique sur un des placeHolder on peut voir une section info apparaitre du bas vers le haut
-- la section info peut être fermer par un "x" qui est en haut a droite 
+- la section info peut être fermer par un "x" qui est en haut a droite
 
+## TEST
+
+- point qui bouge en commentaire
+- TRES BRISER (enlevez les commentaires TEST pour bien rire)
