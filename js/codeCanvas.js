@@ -55,6 +55,7 @@ var perso = {
   largeur: 50,
   hauteur: 50,
   vitesse: 5,
+  taille: 20,
   pos: 0,
 };
 perso.img.src = perso.urlImage;
@@ -100,7 +101,7 @@ function renderer() {
   ctx.drawImage(
     perso.img,
     perso.x - perso.largeur / 2,
-    perso.y - perso.hauteur / 2
+    perso.y - perso.hauteur / 2 - perso.taille
   );
   //dessiner guide
   if (isGuide) {
