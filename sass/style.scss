@@ -24,11 +24,11 @@ Ce thème a été développé dans le cadre du cours de Projet Web en équipe 5w
 @import "base/main";
 
 /*Composant*/
-@import "composant/burger";
-@import "composant/logo";
-@import "composant/menu";
-@import "composant/carrousel";
-@import "composant/info";
+@import "composant/page/burger";
+@import "composant/page/logo";
+@import "composant/page/menu";
+@import "composant/page/carrousel";
+@import "composant/page/info";
 
 @import "accueil";
-@import "composant/anim";
+@import "composant/principal/anim";
