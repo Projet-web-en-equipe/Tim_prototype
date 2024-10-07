@@ -109,6 +109,24 @@ main #titre {
   padding: 0 0.5rem;
 }
 
+@media only screen and (min-width: 1025px) {
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-right: 2rem;
+  }
+  main #titre {
+    position: static;
+    margin-bottom: 1rem;
+  }
+  main .content-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+}
 /*Composant*/
 div#burger {
   width: 1.5rem;
@@ -244,7 +262,22 @@ main section#carrousel {
   padding: 2rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 3rem;
+}
+main section#carrousel::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: rgba(151, 151, 151, 0.2470588235);
+}
+main section#carrousel::-webkit-scrollbar {
+  width: 12px;
+  background-color: rgba(151, 151, 151, 0.2470588235);
+}
+main section#carrousel::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #202020;
 }
 
 main section .banniere {
@@ -269,28 +302,23 @@ main section h2 {
   text-align: center;
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
-  /* color: white; */
 }
 
-/* Pour les tablettes */
 @media only screen and (min-width: 768px) and (max-width: 1025px) {
   main section h2 {
     font-size: 3rem;
   }
 }
-/* Pour les ordinateurs de bureau */
 @media only screen and (min-width: 1025px) {
   main section h2 {
     font-size: 2rem;
   }
   main section#carrousel {
-    padding: 2rem;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 3rem;
-    justify-content: center;
-    max-width: 60vw; /* Limite la largeur pour afficher 3 éléments par rangée */
+    padding: 0;
+    margin: 2rem;
+    max-height: 80vh;
+    overflow-y: scroll;
+    width: 25%;
   }
   main section .banniere {
     position: relative;
@@ -318,14 +346,16 @@ main section h2 {
     opacity: 0;
   }
 }
-section#info {
+main div {
+  width: 100%;
+}
+main div section#info {
   display: none;
   position: absolute;
   bottom: 0;
   overflow-y: scroll;
   height: 90vh;
   width: 98vw;
-  padding: 0.5rem;
   background: rgba(255, 255, 255, 0.479);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
@@ -334,74 +364,80 @@ section#info {
   border: 1px solid rgba(255, 255, 255, 0.18);
   transition: height 0.5s ease;
 }
-section#info::-webkit-scrollbar-track {
+main div section#info::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   background-color: rgba(151, 151, 151, 0.2470588235);
 }
-section#info::-webkit-scrollbar {
+main div section#info::-webkit-scrollbar {
   width: 12px;
   background-color: rgba(151, 151, 151, 0.2470588235);
 }
-section#info::-webkit-scrollbar-thumb {
+main div section#info::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #535353;
 }
-
-section#info h1 {
-  width: 80vw;
-}
-
-section#info.show {
+main div section#info.show {
   display: block;
   animation: slideUp 0.5s ease forwards;
 }
-
-section#info.hide {
+main div section#info.hide {
   animation: slideDown 0.5s ease forwards;
 }
-
-section#info img {
+main div section#info img {
   display: block;
-  margin: 0 auto; /* Centre l'image horizontalement */
   width: auto;
   height: 50%;
   max-width: 80vw;
   -o-object-fit: contain;
-     object-fit: contain; /* Assure que l'image garde ses proportions */
+     object-fit: contain;
   padding: 1rem;
 }
-
-#close-info {
+main div #close-info {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
   background-color: rgba(192, 192, 192, 0.521);
-  /* color: white; */
   border: none;
   border-radius: 50%;
   width: 2rem;
   height: 2rem;
-  /* font-size: 1.5rem; */
   cursor: pointer;
   z-index: 10;
 }
-
-#close-info:hover {
+main div #close-info:hover {
   background-color: rgba(255, 194, 194, 0.521);
 }
-
-section#info p {
+main div section#info p {
   margin: 0 auto;
   width: 90vw;
 }
 
-/* Pour les tablettes */
-/* Pour les ordinateurs de bureau */
 @media only screen and (min-width: 1025px) {
-  section#info .text {
-    padding: 3rem;
+  main div {
+    width: 100vw;
+  }
+  main div section#info {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 75vw;
+    border-radius: 10px;
+  }
+  main div h1 {
+    margin: 0 auto;
+  }
+  main div div.text {
+    margin: 1rem auto;
+    width: 90%;
+  }
+  main div section#info p {
+    margin: 0 auto;
+    width: 100%;
+  }
+  main div #close-info {
+    display: none;
   }
 }
 body {
