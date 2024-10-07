@@ -1,15 +1,11 @@
 {
-    "profs": [
-        {
-            "prenom": "Denis",
-            "nom": "Pellerin",
-            "cours": [
-                "Photoshop",
-                "Premiere",
-                "After Effect"
-            ],
-            "fait": "lorem ipsum",
-            "image": "medias/profs/urlImage"
-        }
-    ]
+  "profs": [
+    {
+      "prenom": "Denis",
+      "nom": "Pellerin",
+      "cours": ["Photoshop", "Premiere", "After Effect"],
+      "fait": "lorem ipsum",
+      "image": "medias/profs/urlImage"
+    }
+  ]
 }
