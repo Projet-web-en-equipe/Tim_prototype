@@ -452,13 +452,14 @@ html {
 }
 
 canvas {
+  display: block;
   position: absolute;
   top: 0;
   left: 0;
   background-color: rgb(0, 134, 217);
-  border: 3px solid black;
   margin: 0;
   padding: 0;
+  z-index: -1;
 }
 
 #ctnAnim {
@@ -474,11 +475,11 @@ canvas {
 
 #ctnTitre {
   width: 100vw;
-  height: 100vh;
+  height: 35vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .titreH1 {
@@ -490,7 +491,7 @@ canvas {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-size: clamp(50px, 10vw, 300px);
+  font-size: clamp(100px, 15vw, 400px);
 }
 
 .titreH2 {
@@ -502,7 +503,7 @@ canvas {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-size: clamp(80px, 12vw, 400px);
+  font-size: clamp(80px, 12vw, 300px);
 }
 
 .titreH3 {
@@ -514,7 +515,7 @@ canvas {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-size: clamp(50px, 15vw, 150px);
+  font-size: clamp(50px, 10vw, 125px);
 }
 
 .anim1 {
@@ -533,6 +534,16 @@ canvas {
   animation: fadeIn 2s 0.6s forwards;
 }
 
+@media (min-width: 1100px) {
+  #ctnTitre {
+    height: 60vh;
+  }
+}
+@media (min-width: 1800px) {
+  #ctnTitre {
+    height: 80vh;
+  }
+}
 @keyframes fadeIn {
   from {
     opacity: 0;
