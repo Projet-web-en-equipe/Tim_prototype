@@ -16,6 +16,7 @@ var exPosX;
 var exPosY;
 var mobile;
 var posExtreme = 50;
+
 if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
   mobile = true;
 }else{

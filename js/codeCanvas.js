@@ -255,24 +255,25 @@ function trouverDirection(cx1, cy1, cx2, cy2) {
   } else {
     haut = false;
   }
-  if (!haut && gauche && angle > 10) {
-    perso.urlImage = "medias/inshallah1.png";
-  } else if (!haut && angle < 10) {
-    perso.urlImage = "medias/inshallah2.png";
-  } else if (!haut && !gauche && angle > 10) {
-    perso.urlImage = "medias/inshallah3.png";
-  } else if (gauche && angle < 10) {
-    perso.urlImage = "medias/inshallah4.png";
-  } else if (!gauche && angle < 10) {
-    perso.urlImage = "medias/inshallah6.png";
-  } else if (gauche && haut && angle > 10) {
-    perso.urlImage = "medias/inshallah7.png";
-  } else if (haut && angle < 10) {
-    perso.urlImage = "medias/inshallah8.png";
-  } else if (!gauche && haut && angle > 10) {
-    perso.urlImage = "medias/inshallah9.png";
-  }
-  perso.img.src = perso.urlImage;
+  //TEST pour trouver la direction
+  // if (!haut && gauche && angle > 10) {
+  //   perso.urlImage = "medias/inshallah1.png";
+  // } else if (!haut && angle < 10) {
+  //   perso.urlImage = "medias/inshallah2.png";
+  // } else if (!haut && !gauche && angle > 10) {
+  //   perso.urlImage = "medias/inshallah3.png";
+  // } else if (gauche && angle < 10) {
+  //   perso.urlImage = "medias/inshallah4.png";
+  // } else if (!gauche && angle < 10) {
+  //   perso.urlImage = "medias/inshallah6.png";
+  // } else if (gauche && haut && angle > 10) {
+  //   perso.urlImage = "medias/inshallah7.png";
+  // } else if (haut && angle < 10) {
+  //   perso.urlImage = "medias/inshallah8.png";
+  // } else if (!gauche && haut && angle > 10) {
+  //   perso.urlImage = "medias/inshallah9.png";
+  // }
+  // perso.img.src = perso.urlImage;
 }
 
 //fonction changer de page
