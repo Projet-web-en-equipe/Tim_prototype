@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +18,7 @@
         <div class="barre"></div>
     </div>
     <div id="logo">
-        <a href="index.html">
+        <a href="index.php">
             <img src="medias/TIMLogo.png" alt="TIMLogo">
         </a>
     </div>
@@ -24,12 +26,12 @@
         <section>
             <nav>
                 <ul>
-                    <li><a href="Tim_prototype/maquette.html">Projets</a></li>
-                    <li><a href="Tim_prototype/maquette.html">Cours</a></li>
-                    <li><a href="Tim_prototype/maquette.html">Prof</a></li>
-                    <li><a href="Tim_prototype/maquette.html">Évènement</a></li>
-                    <li><a href="Tim_prototype/maquette.html">Emplois</a></li>
-                    <li><a href="Tim_prototype/maquette.html">Vie Étudiante</a></li>
+                    <li><a href="maquette.php">Projets</a></li>
+                    <li><a href="maquette.php">Cours</a></li>
+                    <li><a href="maquette.php">Prof</a></li>
+                    <li><a href="maquette.php">Évènement</a></li>
+                    <li><a href="maquette.php">Emplois</a></li>
+                    <li><a href="maquette.php">Vie Étudiante</a></li>
                 </ul>
             </nav>
         </section>
@@ -38,156 +40,37 @@
         <h1 id="titre">Cours</h1>
         <div class="content-wrapper">
             <section id="carrousel">
-                <div class="banniere">
-                    <img src="./medias/placeholder.png" alt="placeholder">
-                    <h2>PlaceHolder</h2>
-                </div>
-                <div class="banniere">
-                    <img src="./medias/placeholder.png" alt="placeholder">
-                    <h2>PlaceHolder</h2>
-                </div>
-                <div class="banniere">
-                    <img src="./medias/placeholder.png" alt="placeholder">
-                    <h2>PlaceHolder</h2>
-                </div>
-                <div class="banniere">
-                    <img src="./medias/placeholder.png" alt="placeholder">
-                    <h2>PlaceHolder</h2>
-                </div>
-                <div class="banniere">
-                    <img src="./medias/placeholder.png" alt="placeholder">
-                    <h2>PlaceHolder</h2>
-                </div>
-                <div class="banniere">
-                    <img src="./medias/placeholder.png" alt="placeholder">
-                    <h2>PlaceHolder</h2>
-                </div>
+                <?php
+                // Lire le fichier profs.json
+                $jsonData = file_get_contents('./admin/profs.json');
+                // Décoder le JSON en tableau associatif PHP
+                $profs = json_decode($jsonData, true)['profs'];
+
+                // Pour chaque professeur, générer une bannière
+                foreach ($profs as $prof) {
+                    // Vérifier si l'URL de l'image est définie et non vide
+                    $image = 'medias/placeholder.png';
+
+                    echo '<div class="banniere" data-cours="' . implode(", ", $prof['cours']) . '" data-fait="' . $prof['fait'] . '">';
+                    echo '<img src="' . $image . '" alt="' . $prof['prenom'] . ' ' . $prof['nom'] . '">';
+                    echo '<h2>' . $prof['prenom'] . ' ' . $prof['nom'] . '</h2>';
+                    echo '</div>';
+                }
+                ?>
 
             </section>
             <section id="info">
                 <button id="close-info" class="close-btn">X</button>
-                <h1>Interfaces Web réactives et animées</h1>
-                <img src="./medias/placeholder.png" alt="placeholder">
-
+                <h1 id="prof-name">Nom du prof</h1>
+                <img id="prof-image" src="./medias/placeholder.png" alt="placeholder">
                 <div class="text">
-                    <p>Dans ce cours, l'étudiant ayant un intérêt plus marqué pour la programmation a la possibilité
-                        d'approfondir les acquis des cours de la séquence Web en s'initiant à des technologies
-                        permettant de
-                        réaliser des applications riches du côté du client.
-                    </p>
-                    <p>
-                        À la fin de ce cours, vous serez en mesure de produire une application Web monopage à interface
-                        utilisateur « réactive » en intégrant une base de données dite en « temps réel » et à la
-                        déployer
-                        dans
-                        un environnement « nuagique » moderne. Vous apprendrez à programmer avec des technologies de
-                        pointe
-                        JavaScript (React, npm, Vite), et à utiliser un environnement de développement nuagique
-                        (Firebase,
-                        GitHub).
-                    </p>
-                    <p>Dans ce cours, l'étudiant ayant un intérêt plus marqué pour la programmation a la possibilité
-                        d'approfondir les acquis des cours de la séquence Web en s'initiant à des technologies
-                        permettant de
-                        réaliser des applications riches du côté du client.
-                    </p>
-                    <p>
-                        À la fin de ce cours, vous serez en mesure de produire une application Web monopage à interface
-                        utilisateur « réactive » en intégrant une base de données dite en « temps réel » et à la
-                        déployer
-                        dans
-                        un environnement « nuagique » moderne. Vous apprendrez à programmer avec des technologies de
-                        pointe
-                        JavaScript (React, npm, Vite), et à utiliser un environnement de développement nuagique
-                        (Firebase,
-                        GitHub).
-                    </p>
-                    <p>Dans ce cours, l'étudiant ayant un intérêt plus marqué pour la programmation a la possibilité
-                        d'approfondir les acquis des cours de la séquence Web en s'initiant à des technologies
-                        permettant de
-                        réaliser des applications riches du côté du client.
-                    </p>
-                    <p>
-                        À la fin de ce cours, vous serez en mesure de produire une application Web monopage à interface
-                        utilisateur « réactive » en intégrant une base de données dite en « temps réel » et à la
-                        déployer
-                        dans
-                        un environnement « nuagique » moderne. Vous apprendrez à programmer avec des technologies de
-                        pointe
-                        JavaScript (React, npm, Vite), et à utiliser un environnement de développement nuagique
-                        (Firebase,
-                        GitHub).
-                    </p>
-                    <p>Dans ce cours, l'étudiant ayant un intérêt plus marqué pour la programmation a la possibilité
-                        d'approfondir les acquis des cours de la séquence Web en s'initiant à des technologies
-                        permettant de
-                        réaliser des applications riches du côté du client.
-                    </p>
-                    <p>
-                        À la fin de ce cours, vous serez en mesure de produire une application Web monopage à interface
-                        utilisateur « réactive » en intégrant une base de données dite en « temps réel » et à la
-                        déployer
-                        dans
-                        un environnement « nuagique » moderne. Vous apprendrez à programmer avec des technologies de
-                        pointe
-                        JavaScript (React, npm, Vite), et à utiliser un environnement de développement nuagique
-                        (Firebase,
-                        GitHub).
-                    </p>
-                    <p>Dans ce cours, l'étudiant ayant un intérêt plus marqué pour la programmation a la possibilité
-                        d'approfondir les acquis des cours de la séquence Web en s'initiant à des technologies
-                        permettant de
-                        réaliser des applications riches du côté du client.
-                    </p>
-                    <p>
-                        À la fin de ce cours, vous serez en mesure de produire une application Web monopage à interface
-                        utilisateur « réactive » en intégrant une base de données dite en « temps réel » et à la
-                        déployer
-                        dans
-                        un environnement « nuagique » moderne. Vous apprendrez à programmer avec des technologies de
-                        pointe
-                        JavaScript (React, npm, Vite), et à utiliser un environnement de développement nuagique
-                        (Firebase,
-                        GitHub).
-                    </p>
-                    <p>Dans ce cours, l'étudiant ayant un intérêt plus marqué pour la programmation a la possibilité
-                        d'approfondir les acquis des cours de la séquence Web en s'initiant à des technologies
-                        permettant de
-                        réaliser des applications riches du côté du client.
-                    </p>
-                    <p>
-                        À la fin de ce cours, vous serez en mesure de produire une application Web monopage à interface
-                        utilisateur « réactive » en intégrant une base de données dite en « temps réel » et à la
-                        déployer
-                        dans
-                        un environnement « nuagique » moderne. Vous apprendrez à programmer avec des technologies de
-                        pointe
-                        JavaScript (React, npm, Vite), et à utiliser un environnement de développement nuagique
-                        (Firebase,
-                        GitHub).
-                    </p>
-                    <p>Dans ce cours, l'étudiant ayant un intérêt plus marqué pour la programmation a la possibilité
-                        d'approfondir les acquis des cours de la séquence Web en s'initiant à des technologies
-                        permettant de
-                        réaliser des applications riches du côté du client.
-                    </p>
-                    <p>
-                        À la fin de ce cours, vous serez en mesure de produire une application Web monopage à interface
-                        utilisateur « réactive » en intégrant une base de données dite en « temps réel » et à la
-                        déployer
-                        dans
-                        un environnement « nuagique » moderne. Vous apprendrez à programmer avec des technologies de
-                        pointe
-                        JavaScript (React, npm, Vite), et à utiliser un environnement de développement nuagique
-                        (Firebase,
-                        GitHub).
-                    </p>
+                    <p id="prof-cours">cours</p>
+                    <p id="prof-fait">fait</p>
                 </div>
             </section>
         </div>
     </main>
     <footer></footer>
-    
 </body>
 <script src="js/animation.js"></script>
 

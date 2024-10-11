@@ -11,13 +11,13 @@
 </head>
 
 <body id="main">
-  <!-- <div id="burger ">
+  <div id="burger ">
     <div class="barre"></div>
     <div class="barre"></div>
     <div class="barre"></div>
   </div>
   <div id="logo">
-    <a href="index.html">
+    <a href="index.php">
       <img src="medias/TIMLogo.png" alt="TIMLogo">
     </a>
   </div>
@@ -25,16 +25,16 @@
     <section>
       <nav>
         <ul>
-          <li><a href="maquette.html">Projets</a></li>
-          <li><a href="maquette.html">Cours</a></li>
-          <li><a href="maquette.html">Prof</a></li>
-          <li><a href="maquette.html">Évènement</a></li>
-          <li><a href="maquette.html">Emplois</a></li>
-          <li><a href="maquette.html">Vie Étudiante</a></li>
+          <li><a href="maquette.php">Projets</a></li>
+          <li><a href="maquette.php">Cours</a></li>
+          <li><a href="maquette.php">Prof</a></li>
+          <li><a href="maquette.php">Évènement</a></li>
+          <li><a href="maquette.php">Emplois</a></li>
+          <li><a href="maquette.php">Vie Étudiante</a></li>
         </ul>
       </nav>
     </section>
-  </header> -->
+  </header>
   <!-- <div id="ctnAnim">
       <div id="ctnTitre">
         <h1 class="titreH2 anim1">Bienvenue</h1>
@@ -44,6 +44,7 @@
       <h3 class="titreH3 anim4">Maisonneuve</h3>
     </div> -->
   <!-- <img src="medias/inshallah.png" alt="inshallah" id="inshallah" /> -->
+   <!-- <button><a href="maquette.html">asdasdadas</a></button> -->
   <canvas width="800" height="800"></canvas>
 </body>
 <script src="js/codeAccueil.js"></script>
