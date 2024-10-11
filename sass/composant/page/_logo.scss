@@ -1,12 +1,19 @@
-div#logo a {
+#logo {
+  //j'ai mis un margin au logo pour que ça soit décollé du bord.
+  margin-right: 1%;
+  border: 1px solid red;
   width: 4rem;
-  height: 4rem;
+}
+
+div#logo a {
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
-  position: absolute;
-  right: 1.5rem;
+  //j'ai enlevé les positions pour rendre le tout adaptatif *Alejandro*
+  //position: absolute;
+  // right: 1.5rem;
   z-index: 4;
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
