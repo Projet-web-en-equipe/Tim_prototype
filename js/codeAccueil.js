@@ -82,7 +82,6 @@ if(!mobile){
       posX = touch.clientX;
       posY = touch.clientY;
       if (leCanvas.x < 0 || leCanvas.x + leCanvas.width > window.innerWidth) {
-        console.log(exPosX);
         leCanvas.x += (posX - exPosX) / 2;
         if (leCanvas.x >= 0 + posExtreme) {
           leCanvas.x = 0 + posExtreme;

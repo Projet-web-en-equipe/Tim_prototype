@@ -60,6 +60,7 @@ var perso = {
   nbVignettes: 4,
   indexVignette: 0,
   sourceX: 0,
+  gauche: false,
 };
 perso.img.src = perso.urlImage;
 //position init perso
@@ -102,16 +103,16 @@ function renderer() {
   });
   //dessiner perso
   ctx.drawImage(
-        perso.img,
-        perso.sourceX,
-        0,
-        perso.largeur,
-        perso.hauteur,
-        perso.x - perso.largeur / 2,
-        perso.y - perso.hauteur / 2,
-        perso.largeur,
-        perso.hauteur
-      );
+    perso.img,
+    perso.sourceX,
+    0,
+    perso.largeur,
+    perso.hauteur,
+    perso.x - perso.largeur / 2,
+    perso.y - perso.hauteur,
+    perso.largeur,
+    perso.hauteur
+  );
   //dessiner guide
   if (isGuide) {
     ctx.drawImage(guide.img, 0, 0);
@@ -222,7 +223,7 @@ function bougerPerso() {
       listePoints[cheminPerso[destination]].x,
       listePoints[cheminPerso[destination]].y
     ) *
-      perso.x +
+    perso.x +
     trouverFonctionB(
       listePoints[perso.pos].x,
       listePoints[perso.pos].y,
@@ -240,6 +241,13 @@ function bougerPerso() {
     if (cheminPerso[cheminPerso.length - 1] == perso.pos) {
       enMouvement = false;
       destination = 0;
+      //savoir quel direction du idle utiliser
+      if(perso.gauche){
+        perso.urlImage = "medias/ericG.png"
+      } else {
+        perso.urlImage = "medias/ericD.png"
+      }
+      perso.img.src = perso.urlImage;
     } else {
       //sinon il se deplace a un point supplementaire
       destination += 1;
@@ -250,25 +258,16 @@ function bougerPerso() {
 function trouverDirection(cx1, cy1, cx2, cy2) {
   //trouver la direction du personnage
   //var haut = false;
-  var gauche = false;
   //var angle = trouverAngle(cx1, cy1, cx2, cy2); //testpour trouver angle
   if (listePoints[perso.pos].x > listePoints[cheminPerso[destination]].x) {
-    gauche = true;
+    perso.gauche = true;
   } else {
-    gauche = false;
+    perso.gauche = false;
   }
-  if(enMouvement){
-    if(gauche){
-      perso.urlImage = "medias/ericMarcheG.png"
-    } else {
-      perso.urlImage = "medias/ericMarcheD.png"
-    }
+  if (perso.gauche) {
+    perso.urlImage = "medias/ericMarcheG.png"
   } else {
-    if(gauche){
-      perso.urlImage = "medias/ericG.png"
-    } else {
-      perso.urlImage = "medias/ericD.png"
-    }
+    perso.urlImage = "medias/ericMarcheD.png"
   }
   perso.img.src = perso.urlImage;
   //TEST pour trouver la direction avec angle exacte
@@ -299,8 +298,8 @@ function trouverDirection(cx1, cy1, cx2, cy2) {
 }
 
 //fonction pour dessiner le perso
-function animerPerso(){
-  if(enMouvement){
+function animerPerso() {
+  if (enMouvement) {
     perso.sourceX = perso.indexVignette * perso.largeur;
   } else {
     perso.sourceX = 0;
