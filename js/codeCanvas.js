@@ -315,3 +315,26 @@ function trouverAngle(cx1, cy1, cx2, cy2) {
   var coteY = Math.abs(cy1 - cy2);
   return (Math.atan(coteX / coteY) * 180) / Math.PI;
 }
+
+//code pour rajouter un hover aux points
+
+// ici je vais voir détecter si la souris survol sur le canvas ou non
+canvas.addEventListener("mousemove", (event) => {
+  const pos = {
+    x: event.clientX - canvas.offsetLeft,
+    y: event.clientY - canvas.offsetTop,
+  };
+
+  // le tout est à false pour avoir une souri normale
+  let survol = false;
+  // je vais passer à travers toute la liste de points pour verfifier si je suis dessus
+  // faeque, si je suis dessus, le survol devient true
+  listePoints.forEach((point) => {
+    if (intersecte(pos, point)) {
+      survol = true;
+    }
+  });
+
+  // la petite main, sionon c'est en default
+  canvas.style.cursor = survol ? "pointer" : "default";
+});

@@ -24,11 +24,13 @@ header nav ul {
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  border: 1px solid white;
 }
 
 header nav ul li a {
   text-decoration: none;
   text-shadow: 0px 0px 20px #000000;
+  border: 1px solid salmon;
 }
 
 #nav-menu {
@@ -36,18 +38,17 @@ header nav ul li a {
   top: 0;
   left: -100%;
   width: 90%;
-  height: 100vh;
+  height: 100%;
   background-color: #333;
   opacity: 0;
   z-index: 3;
   transition: left 0.5s ease, opacity 0.5s ease;
-  background: rgba(255, 255, 255, 0.479);
+  background: #003d5b;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 0 10px 10px 0;
   // border: 1px solid rgba(255, 255, 255, 0.18);
-  border: 1px solid orange;
 }
 
 #nav-menu.active {
