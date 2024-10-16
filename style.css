@@ -421,6 +421,10 @@ footer {
   transition: bottom 0.7s ease-out;
 }
 
+footer:hover {
+  bottom: -225px;
+}
+
 #checkFoot {
   display: none;
 }
