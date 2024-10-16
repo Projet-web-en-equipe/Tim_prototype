@@ -49,14 +49,17 @@ var listePoints = [
 //variable du personnage
 var perso = {
   img: new Image(),
-  urlImage: "medias/inshallah5.png",
+  urlImage: "medias/ericG.png",
   x: 0,
   y: 0,
-  largeur: 50,
-  hauteur: 50,
+  largeur: 75,
+  hauteur: 101,
   vitesse: 5,
   taille: 20,
   pos: 0,
+  nbVignettes: 4,
+  indexVignette: 0,
+  sourceX: 0,
 };
 perso.img.src = perso.urlImage;
 //position init perso
@@ -99,10 +102,16 @@ function renderer() {
   });
   //dessiner perso
   ctx.drawImage(
-    perso.img,
-    perso.x - perso.largeur / 2,
-    perso.y - perso.hauteur / 2 - perso.taille
-  );
+        perso.img,
+        perso.sourceX,
+        0,
+        perso.largeur,
+        perso.hauteur,
+        perso.x - perso.largeur / 2,
+        perso.y - perso.hauteur / 2,
+        perso.largeur,
+        perso.hauteur
+      );
   //dessiner guide
   if (isGuide) {
     ctx.drawImage(guide.img, 0, 0);
@@ -110,6 +119,7 @@ function renderer() {
   //detecter si le perso doit bouger
   if (enMouvement) {
     bougerPerso();
+    animerPerso();
   }
   //TEST changer deplacement point 1
   // if (listePoints[1].x == 800) {
@@ -230,9 +240,6 @@ function bougerPerso() {
     if (cheminPerso[cheminPerso.length - 1] == perso.pos) {
       enMouvement = false;
       destination = 0;
-      //on lui redonne le sprite idle
-      perso.urlImage = "medias/inshallah5.png";
-      perso.img.src = perso.urlImage;
     } else {
       //sinon il se deplace a un point supplementaire
       destination += 1;
@@ -242,20 +249,35 @@ function bougerPerso() {
 
 function trouverDirection(cx1, cy1, cx2, cy2) {
   //trouver la direction du personnage
-  var haut = false;
+  //var haut = false;
   var gauche = false;
-  var angle = trouverAngle(cx1, cy1, cx2, cy2);
+  //var angle = trouverAngle(cx1, cy1, cx2, cy2); //testpour trouver angle
   if (listePoints[perso.pos].x > listePoints[cheminPerso[destination]].x) {
     gauche = true;
   } else {
     gauche = false;
   }
-  if (listePoints[perso.pos].y > listePoints[cheminPerso[destination]].y) {
-    haut = true;
+  if(enMouvement){
+    if(gauche){
+      perso.urlImage = "medias/ericMarcheG.png"
+    } else {
+      perso.urlImage = "medias/ericMarcheD.png"
+    }
   } else {
-    haut = false;
+    if(gauche){
+      perso.urlImage = "medias/ericG.png"
+    } else {
+      perso.urlImage = "medias/ericD.png"
+    }
   }
-  //TEST pour trouver la direction
+  perso.img.src = perso.urlImage;
+  //TEST pour trouver la direction avec angle exacte
+  // if (listePoints[perso.pos].y > listePoints[cheminPerso[destination]].y) {
+  //   haut = true;
+  // } else {
+  //   haut = false;
+  // }
+  //
   // if (!haut && gauche && angle > 10) {
   //   perso.urlImage = "medias/inshallah1.png";
   // } else if (!haut && angle < 10) {
@@ -274,6 +296,22 @@ function trouverDirection(cx1, cy1, cx2, cy2) {
   //   perso.urlImage = "medias/inshallah9.png";
   // }
   // perso.img.src = perso.urlImage;
+}
+
+//fonction pour dessiner le perso
+function animerPerso(){
+  if(enMouvement){
+    perso.sourceX = perso.indexVignette * perso.largeur;
+  } else {
+    perso.sourceX = 0;
+    perso.indexVignette = 0; //A SUPPRIMER
+  }
+
+  perso.indexVignette += 1;
+
+  if (perso.indexVignette >= perso.nbVignettes) {
+    perso.indexVignette = 0;
+  }
 }
 
 //fonction changer de page
