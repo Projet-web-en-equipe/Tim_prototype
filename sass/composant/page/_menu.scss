@@ -1,6 +1,6 @@
 header {
   //j'ai enlevé toutes les positions absolutes et tout rendu en flex pour que ça soit fluide.
-  border: 1px solid red;
+  //border: 1px solid red;
   height: 10%; //en pourcentage et adaptatif
   width: 98%; //en pourcentage et adaptatif.. si je donne 100, le logo part vers la droite cher pas pk...
   display: flex; // le tout en flex

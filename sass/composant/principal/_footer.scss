@@ -1,6 +1,6 @@
 footer {
   position: absolute;
-  background-color: rgb(0, 0, 0);
+  background-color: #003d5b;
   width: 100%; //j'ai changé les mesures en pourcentage pour que ça soit 100% adaptatif
   height: 30%; //j'ai changé les mesures en pourcentage pour que ça soit 100% adaptatif
   bottom: -22%; //j'ai changé les mesures en pourcentage pour que ça soit 100% adaptatif
@@ -9,6 +9,21 @@ footer {
   align-items: flex-start;
   justify-content: space-around;
   transition: bottom 0.7s ease-out;
+  padding: 2%; // pour decoler du bord bien sûr
+
+  h3 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2%;
+    cursor: pointer; // pour montrer aux utilisateurs que c'est clickable
+
+    .material-symbols-outlined {
+      //l'oeil dans le footer
+      font-size: 2rem;
+    }
+  }
 }
 
 #checkFoot {

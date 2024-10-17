@@ -1,5 +1,5 @@
 div#burger {
-  width: 5%; // de son parent étant header
+  width: 6%; // de son parent étant header
   height: 30%; // de son parent étant header
   display: flex;
   flex-direction: column;
@@ -28,8 +28,16 @@ div.barre {
   transition: all 0.3s ease;
 }
 
+.barre:nth-child(1) {
+  transform-origin: center; /* Adjust origin for proper rotation */
+}
+
+.barre:nth-child(3) {
+  transform-origin: center; /* Adjust origin for proper rotation */
+}
+
 div#burger div.barre.active:nth-child(1) {
-  transform: rotate(45deg) translate(0.2rem, 0.25rem);
+  transform: rotate(45deg) translate(0.45rem, 0.45rem);
 }
 
 div#burger div.barre.active:nth-child(2) {
@@ -37,21 +45,21 @@ div#burger div.barre.active:nth-child(2) {
 }
 
 div#burger div.barre.active:nth-child(3) {
-  transform: rotate(-45deg) translate(0.2rem, -0.25rem);
+  transform: rotate(-45deg) translate(0.45rem, -0.45rem);
 }
 
 /* Pour les tablettes */
 @media only screen and (min-width: 768px) and (max-width: 1025px) {
   div#burger {
-    width: 3rem;
-    height: 2rem;
+    width: 4%;
+    height: 28%;
   }
 
   div#burger div.barre.active:nth-child(1) {
-    transform: rotate(45deg) translate(0.6rem, 0.6rem);
+    transform: rotate(45deg) translate(0.4rem, 0.4rem);
   }
   div#burger div.barre.active:nth-child(3) {
-    transform: rotate(-45deg) translate(0.6rem, -0.6rem);
+    transform: rotate(-45deg) translate(0.4rem, -0.4rem);
   }
 }
 
