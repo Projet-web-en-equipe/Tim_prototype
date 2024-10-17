@@ -29,21 +29,14 @@ h1 {
   font-size: clamp(1.5rem, 6vw + 0.5rem, 2.5rem); // rajout de police adaptative
 }
 
-h2 {
-  font-size: clamp(1.25rem, 5vw + 0.5rem, 2rem); // rajout de police adaptative
-}
-
-h3 {
-  font-size: clamp(0.75rem, 4vw + 0.25rem, 1rem);
-}
-
+h2,
 a {
-  // pour le menu et liens
   font-size: clamp(1.25rem, 5vw + 0.5rem, 2rem); // rajout de police adaptative
 }
 
+h3,
 p {
-  font-size: clamp(0.75rem, 4vw + 0.25rem, 1rem); // rajout de police adaptative
+  font-size: clamp(0.75rem, 4vw + 0.25rem, 1rem);
 }
 
 header ul {
@@ -72,10 +65,26 @@ header ul li a {
   overflow: hidden;
 }
 
+/********************** AUTRES RESOLUTIONS ********************/
+
 /* Pour les tablettes */
 @media only screen and (min-width: 768px) and (max-width: 1025px) {
   header ul {
     font-size: 3rem;
+  }
+
+  h1 {
+    font-size: clamp(1.75rem, 3vw + 1rem, 3.5rem);
+  }
+
+  h2,
+  a {
+    font-size: clamp(1.5rem, 2.5vw + 0.75rem, 3rem);
+  }
+
+  h3,
+  p {
+    font-size: clamp(0.75rem, 4vw + 0.25rem, 1rem);
   }
 }
 
@@ -83,5 +92,19 @@ header ul li a {
 @media only screen and (min-width: 1025px) {
   header ul {
     font-size: 1.5rem;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 4vw + 1rem, 4rem);
+  }
+
+  h2,
+  a {
+    font-size: clamp(1.5rem, 3vw + 1rem, 3rem);
+  }
+
+  h3,
+  p {
+    font-size: clamp(1rem, 2vw + 0.5rem, 1.5rem);
   }
 }
