@@ -512,7 +512,6 @@ footer .conteneurSousTitre {
   align-items: center;
   gap: 2%;
   cursor: pointer;
-  border: 1px solid red;
 }
 footer .conteneurSousTitre .material-symbols-rounded {
   font-size: 3rem;
