@@ -73,7 +73,7 @@ var guide = {
 };
 guide.img.src = guide.urlImage;
 /////////prog pour que le l'ile fonctionne/////////
-var render = setInterval(renderer, 1000 / 60);
+var render; //= setInterval(renderer, 1000 / 60);
 var isGuide = false;
 var enMouvement = false;
 var cheminPerso = [];
