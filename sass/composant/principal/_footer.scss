@@ -5,22 +5,23 @@ footer {
   height: 30%;
   bottom: -22%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: flex-start;
-  justify-content: space-around;
+  justify-content: space-between;
   transition: bottom 0.7s ease-out;
 
   .conteneurSousTitre {
-    padding: 0 2% 0 2%;
+    padding: 1%;
     width: 100%;
+
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 2%;
     cursor: pointer;
-    // border: 1px solid red;
 
     .material-symbols-rounded {
+      padding-left: 1%;
       font-size: 3rem;
       color: white;
       display: flex;
@@ -34,8 +35,10 @@ footer {
     }
 
     h3 {
+      margin: 0;
       width: 95%;
-      // border: 1px solid white;
+      height: 25%;
+      //border: 1px solid white;
       display: flex;
       align-items: center;
       justify-content: center;
