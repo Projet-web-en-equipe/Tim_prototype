@@ -1,35 +1,84 @@
 footer {
   position: absolute;
   background-color: #003d5b;
-  width: 100%; //j'ai changé les mesures en pourcentage pour que ça soit 100% adaptatif
-  height: 30%; //j'ai changé les mesures en pourcentage pour que ça soit 100% adaptatif
-  bottom: -22%; //j'ai changé les mesures en pourcentage pour que ça soit 100% adaptatif
+  width: 100%;
+  height: 30%;
+  bottom: -22%;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-around;
   transition: bottom 0.7s ease-out;
-  padding: 2%; // pour decoler du bord bien sûr
 
-  h3 {
+  .conteneurSousTitre {
+    padding: 0 2% 0 2%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 2%;
-    cursor: pointer; // pour montrer aux utilisateurs que c'est clickable
+    cursor: pointer;
+    border: 1px solid red;
 
-    .material-symbols-outlined {
-      //l'oeil dans le footer
-      font-size: 2rem;
+    .material-symbols-rounded {
+      font-size: 3rem;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      //border: 1px solid salmon;
+      width: 5%;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    }
+
+    h3 {
+      width: 95%;
+      // border: 1px solid white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2%;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
     }
   }
+}
+
+.material-symbols-outlined {
+  font-size: 2rem;
+  cursor: pointer;
+  color: white;
 }
 
 #checkFoot {
   display: none;
 }
 
-#checkFoot:checked + label > footer {
-  bottom: 0px;
+/* ça me montre le footer quand qu'y est checked*/
+#checkFoot:checked + label footer {
+  bottom: 0;
+}
+
+/* je vais fade out le h3 et ensuite y donner un delai pour qu'il dispparaisse*/
+#checkFoot:checked + label footer h3 {
+  opacity: 0;
+  visibility: hidden;
+  transition-delay: 0.5s; /*je donne un delai sinon sa rend la visibilité non disponible tout de suite */
+}
+
+/* je vais fade out le h3 et ensuite y donner un delai pour qu'il dispparaisse*/
+#checkFoot:checked + label footer .material-symbols-rounded {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0.5s; /*je donne un delai sinon sa rend la visibilité non disponible tout de suite */
+}
+
+/* quand le le footer n'est pas checked */
+#checkFoot:not(:checked) + label footer h3 {
+  opacity: 1; // je montre le h3
+  visibility: visible; // le rends visible et lorsque hover, on voit la tite main
+  transition-delay: 0s; /* pas de delai*/
 }

@@ -198,9 +198,6 @@ div#burger div.barre.active:nth-child(3) {
   margin-right: 1%;
   width: 4rem;
 }
-#logo img {
-  border: 1px solid red;
-}
 
 div#logo a {
   height: auto;
@@ -506,26 +503,73 @@ footer {
   align-items: flex-start;
   justify-content: space-around;
   transition: bottom 0.7s ease-out;
-  padding: 2%;
 }
-footer h3 {
+footer .conteneurSousTitre {
+  padding: 0 2% 0 2%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2%;
   cursor: pointer;
+  border: 1px solid red;
 }
-footer h3 .material-symbols-outlined {
+footer .conteneurSousTitre .material-symbols-rounded {
+  font-size: 3rem;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5%;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+footer .conteneurSousTitre h3 {
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2%;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+
+.material-symbols-outlined {
   font-size: 2rem;
+  cursor: pointer;
+  color: white;
 }
 
 #checkFoot {
   display: none;
 }
 
-#checkFoot:checked + label > footer {
-  bottom: 0px;
+/* ça me montre le footer quand qu'y est checked*/
+#checkFoot:checked + label footer {
+  bottom: 0;
+}
+
+/* je vais fade out le h3 et ensuite y donner un delai pour qu'il dispparaisse*/
+#checkFoot:checked + label footer h3 {
+  opacity: 0;
+  visibility: hidden;
+  transition-delay: 0.5s; /*je donne un delai sinon sa rend la visibilité non disponible tout de suite */
+}
+
+/* je vais fade out le h3 et ensuite y donner un delai pour qu'il dispparaisse*/
+#checkFoot:checked + label footer .material-symbols-rounded {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0.5s; /*je donne un delai sinon sa rend la visibilité non disponible tout de suite */
+}
+
+/* quand le le footer n'est pas checked */
+#checkFoot:not(:checked) + label footer h3 {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s; /* pas de delai*/
 }
 
 main {
