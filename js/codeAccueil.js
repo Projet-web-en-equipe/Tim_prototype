@@ -12,6 +12,11 @@ leCanvas.y = window.innerHeight / 2 - leCanvas.height / 2;
 leCanvas.html.style.left = leCanvas.x + "px";
 leCanvas.html.style.top = leCanvas.y + "px";
 
+if(leCanvas.height > window.innerHeight){
+  leCanvas.y = 50;
+  leCanvas.html.style.top = leCanvas.y + "px";
+}
+
 var exPosX;
 var exPosY;
 var mobile;
@@ -104,6 +109,7 @@ if(!mobile){
     }
     exPosX = posX;
     exPosY = posY;
+    console.log(leCanvas.y);
   });
 }
 
