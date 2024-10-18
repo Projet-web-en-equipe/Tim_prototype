@@ -1,4 +1,4 @@
-const burger = document.getElementById('burger');
+/*const burger = document.getElementById('burger');
 const barres = document.querySelectorAll('#burger .barre');
 const navSection = document.getElementById('nav-menu');
 const infoSection = document.querySelector('section#info');
@@ -47,4 +47,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Ajouter l'événement de clic pour le bouton de fermeture
     closeBtn.addEventListener('click', hideInfo);
-});
+});*/
