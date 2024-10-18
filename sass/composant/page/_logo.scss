@@ -3,6 +3,10 @@
   margin-right: 1%;
   // border: 1px solid red;
   width: 4rem;
+
+  img {
+    border: 1px solid red;
+  }
 }
 
 div#logo a {
@@ -19,4 +23,18 @@ div#logo a {
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
+}
+
+/* Pour les tablettes */
+@media only screen and (min-width: 768px) and (max-width: 1025px) {
+  #logo {
+    width: 6rem;
+  }
+}
+
+/* Pour les ordinateurs de bureau */
+@media only screen and (min-width: 1025px) {
+  #logo {
+    width: 8rem;
+  }
 }
