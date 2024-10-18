@@ -59,6 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  //rajout du event listener dans le document pour fermer les menus
+  //rajout du event listener dans le document pour fermer les menus et
   document.addEventListener("click", fermerMenus);
 });
