@@ -1,4 +1,5 @@
-//les variables de bases
+////////////////VARIABLES DE DEPART//////////////////
+
 var canvas = document.querySelector("canvas");
 var ctx = canvas.getContext("2d");
 //variable des coorconnees
@@ -72,14 +73,20 @@ var guide = {
   urlImage: "medias/GUIDE.png",
 };
 guide.img.src = guide.urlImage;
-/////////prog pour que le l'ile fonctionne/////////
+//le renderer du canvas
 var render; //= setInterval(renderer, 1000 / 60);
+//bool qui detecte si le canvas doit etre afficher
 var isGuide = false;
+//bool qui detecte si le personnage bouge
 var enMouvement = false;
+//depart de la liste des points a lequelles le perso devra aller
 var cheminPerso = [];
+//la position ou le perso doit aller
 var destination = 0;
 //TEST
 // var vPoint = 2;
+
+/////////////////CODE QUI SE REFRESH EN BOUCLE//////////////////////
 
 //fonction qui render l'ile
 function renderer() {
@@ -131,6 +138,8 @@ function renderer() {
   // listePoints[1].x += vPoint;
 }
 
+//////////////ADDEVENTLISTENER//////////////////
+
 //detecter les clicks
 canvas.addEventListener("click", (event) => {
   const pos = {
@@ -148,6 +157,8 @@ canvas.addEventListener("click", (event) => {
     }
   });
 });
+
+//////////////FONCTION CITY/////////////////
 
 function trouverChemin(nouvellePosition) {
   //declarer les variables pour checker clockwise
@@ -326,7 +337,7 @@ function intersecte(click, cercle) {
   );
 }
 
-//fonction pour detecter quand le perso est assez proche du point pour l'arreter
+//fonction pour detecter quand le perso est assez proche du point pour s'arreter
 function arriveAuPoint(perso, cercle) {
   return (
     Math.sqrt((perso.x - cercle.x) ** 2 + (perso.y - cercle.y) ** 2) <
@@ -334,20 +345,23 @@ function arriveAuPoint(perso, cercle) {
   );
 }
 
-//fonction pour trouver le a dans la fonction lineaire d'une collision
+//fonction pour trouver le a dans une fonction lineaire
+//a partir de 2 coordonnees
 function trouverFonctionA(cx1, cy1, cx2, cy2) {
   var a = (cy2 - cy1) / (cx2 - cx1);
   return a;
 }
 
-//fonction pour trouver le b dans la fonction lineaire d'une collision
+//fonction pour trouver le b dans une fonction lineaire
+//a partir de 2 coordonnees
 function trouverFonctionB(cx1, cy1, cx2, cy2) {
   var a = (cy2 - cy1) / (cx2 - cx1);
   var b = cy1 - a * cx1;
   return b;
 }
 
-//fonction pour trouver l'angle de la fonction
+//fonction pour trouver l'angle d'une fonction lineaire
+//a partir de 2 coordonnees
 function trouverAngle(cx1, cy1, cx2, cy2) {
   var coteX = Math.abs(cx1 - cx2);
   var coteY = Math.abs(cy1 - cy2);
