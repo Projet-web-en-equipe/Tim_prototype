@@ -10,6 +10,7 @@ var listePoints = [
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
     tag: "Projets",
+    lien: "/maquette.html"
   },
   {
     x: 650,
@@ -17,6 +18,7 @@ var listePoints = [
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
     tag: "Cours",
+    lien: "ca pue"
   },
   {
     x: 600,
@@ -24,6 +26,7 @@ var listePoints = [
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
     tag: "Profs",
+    lien: "/maquette.html"
   },
   {
     x: 400,
@@ -31,6 +34,7 @@ var listePoints = [
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
     tag: "Emplois",
+    lien: "/maquette.html"
   },
   {
     x: 150,
@@ -38,6 +42,7 @@ var listePoints = [
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
     tag: "Évènements",
+    lien: "/maquette.html"
   },
   {
     x: 250,
@@ -45,6 +50,7 @@ var listePoints = [
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
     tag: "Vie étudiante",
+    lien: "/maquette.html"
   },
 ];
 //variable du personnage
@@ -149,7 +155,7 @@ canvas.addEventListener("click", (event) => {
   listePoints.forEach((point) => {
     if (intersecte(pos, point)) {
       if (listePoints.indexOf(point) == perso.pos) {
-        changerPage("/maquette.html");
+        changerPage(point.lien);
       } else {
         cheminPerso = trouverChemin(listePoints.indexOf(point));
         enMouvement = true;
@@ -160,6 +166,7 @@ canvas.addEventListener("click", (event) => {
 
 //////////////FONCTION CITY/////////////////
 
+//fonction qui cree la liste de destination que le perso devra prendre
 function trouverChemin(nouvellePosition) {
   //declarer les variables pour checker clockwise
   var cheminGauche = [];
@@ -183,7 +190,8 @@ function trouverChemin(nouvellePosition) {
     }
     cheminDroite.push(futurPosDroite);
   }
-  //comparer les deux pour retourner celui qui est le plus petit (sils sont egaux clockwise va gagner)
+  //comparer les deux pour retourner celui qui est le plus petit 
+  //(s'ils sont egaux clockwise va gagner)
   if (
     cheminGauche.length < cheminDroite.length ||
     cheminGauche.length == cheminDroite.length
@@ -266,6 +274,8 @@ function bougerPerso() {
   }
 }
 
+//fonction qui detecte si le perso se deplace vers la gauche ou la droite
+//TEST deduit dans quelle direction le perso se deplace exactement
 function trouverDirection(cx1, cy1, cx2, cy2) {
   //trouver la direction du personnage
   //var haut = false;
@@ -324,7 +334,7 @@ function animerPerso() {
   }
 }
 
-//fonction changer de page
+//fonction pour changer de page
 function changerPage(url) {
   window.location.href = url;
 }
