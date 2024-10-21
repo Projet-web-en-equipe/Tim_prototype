@@ -68,6 +68,7 @@ var perso = {
   indexVignette: 0,
   sourceX: 0,
   gauche: false,
+  surIle: false,
 };
 perso.img.src = perso.urlImage;
 //position init perso
@@ -80,7 +81,7 @@ var guide = {
 };
 guide.img.src = guide.urlImage;
 //le renderer du canvas
-var render; //= setInterval(renderer, 1000 / 60);
+var render= setInterval(renderer, 1000 / 60);
 //bool qui detecte si le canvas doit etre afficher
 var isGuide = false;
 //bool qui detecte si le personnage bouge
@@ -115,17 +116,19 @@ function renderer() {
     );
   });
   //dessiner perso
-  ctx.drawImage(
-    perso.img,
-    perso.sourceX,
-    0,
-    perso.largeur,
-    perso.hauteur,
-    perso.x - perso.largeur / 2,
-    perso.y - perso.hauteur,
-    perso.largeur,
-    perso.hauteur
-  );
+  if(perso.surIle){
+    ctx.drawImage(
+      perso.img,
+      perso.sourceX,
+      0,
+      perso.largeur,
+      perso.hauteur,
+      perso.x - perso.largeur / 2,
+      perso.y - perso.hauteur,
+      perso.largeur,
+      perso.hauteur
+    );
+  }
   //dessiner guide
   if (isGuide) {
     ctx.drawImage(guide.img, 0, 0);
@@ -152,16 +155,20 @@ canvas.addEventListener("click", (event) => {
     x: event.clientX - canvas.offsetLeft,
     y: event.clientY - canvas.offsetTop,
   };
-  listePoints.forEach((point) => {
-    if (intersecte(pos, point)) {
-      if (listePoints.indexOf(point) == perso.pos) {
-        changerPage(point.lien);
-      } else {
-        cheminPerso = trouverChemin(listePoints.indexOf(point));
-        enMouvement = true;
+  //faire que les clics s'active uniquement lorsque le perso est sur l'ile et pas en deplacement
+  if(perso.surIle && !enMouvement){
+    listePoints.forEach((point) => {
+      if (intersecte(pos, point)) {
+        if (listePoints.indexOf(point) == perso.pos) {
+          changerPage(point.lien);
+        } else {
+          console.log("POINT")
+          cheminPerso = trouverChemin(listePoints.indexOf(point));
+          enMouvement = true;
+        }
       }
-    }
-  });
+    });
+  }
 });
 
 //////////////FONCTION CITY/////////////////

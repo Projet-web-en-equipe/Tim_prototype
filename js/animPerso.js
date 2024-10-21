@@ -14,7 +14,7 @@ function fonctionAnim(){
         pseudoPerso.style.transform = "translate(" + checkXPerso() + "px , " + (checkYPerso() + pseudoVal )+ "px) RotateZ(" + pseudoVal + "deg)"
         pseudoPerso.style.display  = "none";
         clearInterval(tempsAnim);
-        var render = setInterval(renderer, 1000 / 60);
+        perso.surIle = true;
     }
 }
 
