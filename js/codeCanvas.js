@@ -62,6 +62,8 @@ var perso = {
   largeur: 75,
   hauteur: 101,
   vitesse: 5,
+  vitesseAnim: 3,
+  indexAnim: 0,
   taille: 20,
   pos: 0,
   nbVignettes: 4,
@@ -331,10 +333,14 @@ function animerPerso() {
     perso.sourceX = perso.indexVignette * perso.largeur;
   } else {
     perso.sourceX = 0;
-    perso.indexVignette = 0; //A SUPPRIMER
   }
 
-  perso.indexVignette += 1;
+  if(perso.indexAnim == perso.vitesseAnim){
+    perso.indexVignette += 1;
+    perso.indexAnim = 0;
+  } else {
+    perso.indexAnim++;
+  }
 
   if (perso.indexVignette >= perso.nbVignettes) {
     perso.indexVignette = 0;
