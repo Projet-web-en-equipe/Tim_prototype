@@ -62,7 +62,7 @@ var perso = {
   largeur: 75,
   hauteur: 101,
   vitesse: 5,
-  vitesseAnim: 6,
+  vitesseAnim: 5,
   indexAnim: 0,
   taille: 20,
   pos: 0,
@@ -294,9 +294,9 @@ function trouverDirection(cx1, cy1, cx2, cy2) {
     perso.gauche = false;
   }
   if (perso.gauche) {
-    perso.urlImage = "medias/ericMarcheG.png"
+    perso.urlImage = "medias/laVersionMini - Copie.png"
   } else {
-    perso.urlImage = "medias/ericMarcheD.png"
+    perso.urlImage = "medias/laVersionMini.png"
   }
   perso.img.src = perso.urlImage;
   //TEST pour trouver la direction avec angle exacte
