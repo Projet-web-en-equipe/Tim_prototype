@@ -62,7 +62,7 @@ var perso = {
   largeur: 75,
   hauteur: 101,
   vitesse: 5,
-  vitesseAnim: 3,
+  vitesseAnim: 6,
   indexAnim: 0,
   taille: 20,
   pos: 0,
@@ -164,7 +164,6 @@ canvas.addEventListener("click", (event) => {
         if (listePoints.indexOf(point) == perso.pos) {
           changerPage(point.lien);
         } else {
-          console.log("POINT")
           cheminPerso = trouverChemin(listePoints.indexOf(point));
           enMouvement = true;
         }
