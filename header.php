@@ -24,31 +24,67 @@
 
 
     <section id="nav-menu">
-    <nav>
+      <nav>
         <ul>
-            <li>
-                <a href="<?php echo get_category_link(get_category_by_slug('cours')->term_id); ?>">Projets</a>
-                <img class="icone-nav" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/Cours.png" />
-            </li>
-            <li>
-                <a href="<?php echo get_category_link(get_category_by_slug('cours')->term_id); ?>">Cours</a>
-            </li>
-            <li>
-                <a href="<?php echo get_category_link(get_category_by_slug('cours')->term_id); ?>">Profs</a>
-                <img class="icone-nav" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/Profs.png" />
-            </li>
-            <li><a href="<?php echo get_category_link(get_category_by_slug('cours')->term_id); ?>">Évènements</a></li>
-            <li>
-                <a href="<?php echo get_category_link(get_category_by_slug('cours')->term_id); ?>">Futur</a>
-                <img class="icone-nav" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/Emplois.png" />
-            </li>
-            <li>
-                <a href="<?php echo get_category_link(get_category_by_slug('cours')->term_id); ?>">Vie Étudiante</a>
-                <img class="icone-nav" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/vieEtudiante.png" />
-            </li>
+          <li>
+            <a href="<?php echo get_category_link(get_category_by_slug('cours')->term_id); ?>">Projets <i class="fa-duotone fa-ice-cream"></i></a>
+            <!-- <img class="icone-nav" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/Cours.png" /> -->
+          </li>
+          <li>
+            <a href="<?php echo get_category_link(get_category_by_slug('cours')->term_id); ?>">Cours
+              <i
+                class="fa-duotone fa-solid fa-ferris-wheel"
+                style="
+                    --fa-primary-color: #ff5733;
+                    --fa-secondary-color: #3333ff;
+                  "></i>
+            </a>
+          </li>
+          <li>
+            <a href="<?php echo get_category_link(get_category_by_slug('cours')->term_id); ?>">Profs
+              <i
+                class="fa-duotone fa-solid fa-lighthouse"
+                style="
+                    --fa-primary-color: #ff5733;
+                    --fa-secondary-color: #3333ff;
+                  "></i>
+            </a>
+            <!-- <img class="icone-nav" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/Profs.png" /> -->
+          </li>
+          <li><a href="<?php echo get_category_link(get_category_by_slug('cours')->term_id); ?>">Évènements
+              <i
+                class="fa-duotone fa-calendar-days"
+                style="
+                    --fa-primary-color: #ff5733;
+                    --fa-secondary-color: #3333ff;
+                  "></i>
+            </a>
+          </li>
+          <li>
+            <a href="<?php echo get_category_link(get_category_by_slug('cours')->term_id); ?>">Futur
+              <i
+                class="fa-duotone fa-solid fa-briefcase-arrow-right"
+                style="
+                    --fa-primary-color: #ff5733;
+                    --fa-secondary-color: #3333ff;
+                  "></i>
+            </a>
+            <!-- <img class="icone-nav" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/Emplois.png" /> -->
+          </li>
+          <li>
+            <a href="<?php echo get_category_link(get_category_by_slug('cours')->term_id); ?>">Vie Étudiante
+              <i
+                class="fa-duotone fa-solid fa-campfire"
+                style="
+                    --fa-primary-color: #ff5733;
+                    --fa-secondary-color: #3333ff;
+                  "></i>
+            </a>
+            <!-- <img class="icone-nav" src="https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/vieEtudiante.png" /> -->
+          </li>
         </ul>
-    </nav>
-</section>
+      </nav>
+    </section>
 
 
   </header>
