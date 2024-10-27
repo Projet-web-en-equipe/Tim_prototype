@@ -116,7 +116,7 @@ header ul li a:hover {
   }
 }
 body {
-  background-image: url("../../medias/pexels-felixmittermeier-956999.jpg");
+  background-image: url("http://localhost/wordpress/wp-content/uploads/2024/10/pexels-felixmittermeier-956999-scaled.jpg");
   background-size: cover;
   background-repeat: repeat;
 }
@@ -207,8 +207,7 @@ div#logo a {
   cursor: pointer;
   z-index: 4;
   -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+/Edge */
+  -moz-user-select: none; /* Firefox */ /* IE10+/Edge */
   user-select: none; /* Standard */
 }
 
@@ -442,7 +441,8 @@ main div section#info img {
   width: auto;
   height: 50%;
   max-width: 80vw;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   padding: 1rem;
 }
 main div #close-info {
@@ -667,18 +667,19 @@ canvas {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   animation: fadeOut 5s 5s forwards;
 }
 
 #ctnTitre {
   width: 100vw;
-  height: 100vh;
+  height: 35vh;
+  margin-top: 5vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .titreH1 {
@@ -690,7 +691,7 @@ canvas {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-size: clamp(50px, 10vw, 300px);
+  font-size: clamp(100px, 15vw, 400px);
 }
 
 .titreH2 {
@@ -702,7 +703,7 @@ canvas {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-size: clamp(80px, 12vw, 400px);
+  font-size: clamp(80px, 12vw, 300px);
 }
 
 .titreH3 {
@@ -714,7 +715,7 @@ canvas {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-size: clamp(50px, 15vw, 150px);
+  font-size: clamp(50px, 10vw, 125px);
 }
 
 .anim1 {
@@ -733,6 +734,25 @@ canvas {
   animation: fadeIn 2s 0.6s forwards;
 }
 
+@media (min-width: 1100px) {
+  #ctnAnim {
+    justify-content: flex-start;
+  }
+  #ctnTitre {
+    height: 60vh;
+    justify-content: flex-start;
+  }
+}
+@media (min-width: 1800px) {
+  #ctnTitre {
+    height: 80vh;
+  }
+}
+@media (min-width: 1900px) {
+  #ctnTitre {
+    margin-top: 0vh;
+  }
+}
 @keyframes fadeIn {
   from {
     opacity: 0;

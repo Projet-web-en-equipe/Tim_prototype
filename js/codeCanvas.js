@@ -1,4 +1,5 @@
-//les variables de bases
+////////////////VARIABLES DE DEPART//////////////////
+
 var canvas = document.querySelector("canvas");
 var ctx = canvas.getContext("2d");
 //variable des coorconnees
@@ -9,6 +10,7 @@ var listePoints = [
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
     tag: "Projets",
+    lien: "/maquette.html"
   },
   {
     x: 650,
@@ -16,6 +18,7 @@ var listePoints = [
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
     tag: "Cours",
+    lien: "ca pue"
   },
   {
     x: 600,
@@ -23,6 +26,7 @@ var listePoints = [
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
     tag: "Profs",
+    lien: "/maquette.html"
   },
   {
     x: 400,
@@ -30,6 +34,7 @@ var listePoints = [
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
     tag: "Emplois",
+    lien: "/maquette.html"
   },
   {
     x: 150,
@@ -37,6 +42,7 @@ var listePoints = [
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
     tag: "Évènements",
+    lien: "/maquette.html"
   },
   {
     x: 250,
@@ -44,19 +50,27 @@ var listePoints = [
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
     tag: "Vie étudiante",
+    lien: "/maquette.html"
   },
 ];
 //variable du personnage
 var perso = {
   img: new Image(),
-  urlImage: "medias/inshallah5.png",
+  urlImage: "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/EricG.png",
   x: 0,
   y: 0,
-  largeur: 50,
-  hauteur: 50,
+  largeur: 75,
+  hauteur: 101,
   vitesse: 5,
+  vitesseAnim: 5,
+  indexAnim: 0,
   taille: 20,
   pos: 0,
+  nbVignettes: 4,
+  indexVignette: 0,
+  sourceX: 0,
+  gauche: false,
+  surIle: false,
 };
 perso.img.src = perso.urlImage;
 //position init perso
@@ -65,17 +79,23 @@ perso.y = listePoints[perso.pos].y;
 //le guide
 var guide = {
   img: new Image(),
-  urlImage: "medias/GUIDE.png",
+  urlImage: "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/GUIDE.png",
 };
 guide.img.src = guide.urlImage;
-/////////prog pour que le l'ile fonctionne/////////
-var render = setInterval(renderer, 1000 / 60);
+//le renderer du canvas
+var render= setInterval(renderer, 1000 / 60);
+//bool qui detecte si le canvas doit etre afficher
 var isGuide = false;
+//bool qui detecte si le personnage bouge
 var enMouvement = false;
+//depart de la liste des points a lequelles le perso devra aller
 var cheminPerso = [];
+//la position ou le perso doit aller
 var destination = 0;
 //TEST
 // var vPoint = 2;
+
+/////////////////CODE QUI SE REFRESH EN BOUCLE//////////////////////
 
 //fonction qui render l'ile
 function renderer() {
@@ -98,11 +118,19 @@ function renderer() {
     );
   });
   //dessiner perso
-  ctx.drawImage(
-    perso.img,
-    perso.x - perso.largeur / 2,
-    perso.y - perso.hauteur / 2 - perso.taille
-  );
+  if(perso.surIle){
+    ctx.drawImage(
+      perso.img,
+      perso.sourceX,
+      0,
+      perso.largeur,
+      perso.hauteur,
+      perso.x - perso.largeur / 2,
+      perso.y - perso.hauteur,
+      perso.largeur,
+      perso.hauteur
+    );
+  }
   //dessiner guide
   if (isGuide) {
     ctx.drawImage(guide.img, 0, 0);
@@ -110,6 +138,7 @@ function renderer() {
   //detecter si le perso doit bouger
   if (enMouvement) {
     bougerPerso();
+    animerPerso();
   }
   //TEST changer deplacement point 1
   // if (listePoints[1].x == 800) {
@@ -120,24 +149,32 @@ function renderer() {
   // listePoints[1].x += vPoint;
 }
 
+//////////////ADDEVENTLISTENER//////////////////
+
 //detecter les clicks
 canvas.addEventListener("click", (event) => {
   const pos = {
     x: event.clientX - canvas.offsetLeft,
     y: event.clientY - canvas.offsetTop,
   };
-  listePoints.forEach((point) => {
-    if (intersecte(pos, point)) {
-      if (listePoints.indexOf(point) == perso.pos) {
-        changerPage("./maquette.php");
-      } else {
-        cheminPerso = trouverChemin(listePoints.indexOf(point));
-        enMouvement = true;
+  //faire que les clics s'active uniquement lorsque le perso est sur l'ile et pas en deplacement
+  if(perso.surIle && !enMouvement){
+    listePoints.forEach((point) => {
+      if (intersecte(pos, point)) {
+        if (listePoints.indexOf(point) == perso.pos) {
+          changerPage(point.lien);
+        } else {
+          cheminPerso = trouverChemin(listePoints.indexOf(point));
+          enMouvement = true;
+        }
       }
-    }
-  });
+    });
+  }
 });
 
+//////////////FONCTION CITY/////////////////
+
+//fonction qui cree la liste de destination que le perso devra prendre
 function trouverChemin(nouvellePosition) {
   //declarer les variables pour checker clockwise
   var cheminGauche = [];
@@ -161,7 +198,8 @@ function trouverChemin(nouvellePosition) {
     }
     cheminDroite.push(futurPosDroite);
   }
-  //comparer les deux pour retourner celui qui est le plus petit (sils sont egaux clockwise va gagner)
+  //comparer les deux pour retourner celui qui est le plus petit 
+  //(s'ils sont egaux clockwise va gagner)
   if (
     cheminGauche.length < cheminDroite.length ||
     cheminGauche.length == cheminDroite.length
@@ -212,7 +250,7 @@ function bougerPerso() {
       listePoints[cheminPerso[destination]].x,
       listePoints[cheminPerso[destination]].y
     ) *
-      perso.x +
+    perso.x +
     trouverFonctionB(
       listePoints[perso.pos].x,
       listePoints[perso.pos].y,
@@ -230,8 +268,12 @@ function bougerPerso() {
     if (cheminPerso[cheminPerso.length - 1] == perso.pos) {
       enMouvement = false;
       destination = 0;
-      //on lui redonne le sprite idle
-      perso.urlImage = "medias/inshallah5.png";
+      //savoir quel direction du idle utiliser
+      if(perso.gauche){
+        perso.urlImage = "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/EricG.png"
+      } else {
+        perso.urlImage = "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/EricD.png"
+      }
       perso.img.src = perso.urlImage;
     } else {
       //sinon il se deplace a un point supplementaire
@@ -240,42 +282,71 @@ function bougerPerso() {
   }
 }
 
+//fonction qui detecte si le perso se deplace vers la gauche ou la droite
+//TEST deduit dans quelle direction le perso se deplace exactement
 function trouverDirection(cx1, cy1, cx2, cy2) {
   //trouver la direction du personnage
-  var haut = false;
-  var gauche = false;
-  var angle = trouverAngle(cx1, cy1, cx2, cy2);
+  //var haut = false;
+  //var angle = trouverAngle(cx1, cy1, cx2, cy2); //testpour trouver angle
   if (listePoints[perso.pos].x > listePoints[cheminPerso[destination]].x) {
-    gauche = true;
+    perso.gauche = true;
   } else {
-    gauche = false;
+    perso.gauche = false;
   }
-  if (listePoints[perso.pos].y > listePoints[cheminPerso[destination]].y) {
-    haut = true;
+  if (perso.gauche) {
+    perso.urlImage = "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/laVersionMini-Copie.png"
   } else {
-    haut = false;
-  }
-  if (!haut && gauche && angle > 10) {
-    perso.urlImage = "medias/inshallah1.png";
-  } else if (!haut && angle < 10) {
-    perso.urlImage = "medias/inshallah2.png";
-  } else if (!haut && !gauche && angle > 10) {
-    perso.urlImage = "medias/inshallah3.png";
-  } else if (gauche && angle < 10) {
-    perso.urlImage = "medias/inshallah4.png";
-  } else if (!gauche && angle < 10) {
-    perso.urlImage = "medias/inshallah6.png";
-  } else if (gauche && haut && angle > 10) {
-    perso.urlImage = "medias/inshallah7.png";
-  } else if (haut && angle < 10) {
-    perso.urlImage = "medias/inshallah8.png";
-  } else if (!gauche && haut && angle > 10) {
-    perso.urlImage = "medias/inshallah9.png";
+    perso.urlImage = "https://gftnth00.mywhc.ca/tim14/wp-content/uploads/2024/10/laVersionMini.png"
   }
   perso.img.src = perso.urlImage;
+  //TEST pour trouver la direction avec angle exacte
+  // if (listePoints[perso.pos].y > listePoints[cheminPerso[destination]].y) {
+  //   haut = true;
+  // } else {
+  //   haut = false;
+  // }
+  //
+  // if (!haut && gauche && angle > 10) {
+  //   perso.urlImage = "medias/inshallah1.png";
+  // } else if (!haut && angle < 10) {
+  //   perso.urlImage = "medias/inshallah2.png";
+  // } else if (!haut && !gauche && angle > 10) {
+  //   perso.urlImage = "medias/inshallah3.png";
+  // } else if (gauche && angle < 10) {
+  //   perso.urlImage = "medias/inshallah4.png";
+  // } else if (!gauche && angle < 10) {
+  //   perso.urlImage = "medias/inshallah6.png";
+  // } else if (gauche && haut && angle > 10) {
+  //   perso.urlImage = "medias/inshallah7.png";
+  // } else if (haut && angle < 10) {
+  //   perso.urlImage = "medias/inshallah8.png";
+  // } else if (!gauche && haut && angle > 10) {
+  //   perso.urlImage = "medias/inshallah9.png";
+  // }
+  // perso.img.src = perso.urlImage;
 }
 
-//fonction changer de page
+//fonction pour dessiner le perso
+function animerPerso() {
+  if (enMouvement) {
+    perso.sourceX = perso.indexVignette * perso.largeur;
+  } else {
+    perso.sourceX = 0;
+  }
+
+  if(perso.indexAnim == perso.vitesseAnim){
+    perso.indexVignette += 1;
+    perso.indexAnim = 0;
+  } else {
+    perso.indexAnim++;
+  }
+
+  if (perso.indexVignette >= perso.nbVignettes) {
+    perso.indexVignette = 0;
+  }
+}
+
+//fonction pour changer de page
 function changerPage(url) {
   window.location.href = url;
 }
@@ -288,7 +359,7 @@ function intersecte(click, cercle) {
   );
 }
 
-//fonction pour detecter quand le perso est assez proche du point pour l'arreter
+//fonction pour detecter quand le perso est assez proche du point pour s'arreter
 function arriveAuPoint(perso, cercle) {
   return (
     Math.sqrt((perso.x - cercle.x) ** 2 + (perso.y - cercle.y) ** 2) <
@@ -296,45 +367,25 @@ function arriveAuPoint(perso, cercle) {
   );
 }
 
-//fonction pour trouver le a dans la fonction lineaire d'une collision
+//fonction pour trouver le a dans une fonction lineaire
+//a partir de 2 coordonnees
 function trouverFonctionA(cx1, cy1, cx2, cy2) {
   var a = (cy2 - cy1) / (cx2 - cx1);
   return a;
 }
 
-//fonction pour trouver le b dans la fonction lineaire d'une collision
+//fonction pour trouver le b dans une fonction lineaire
+//a partir de 2 coordonnees
 function trouverFonctionB(cx1, cy1, cx2, cy2) {
   var a = (cy2 - cy1) / (cx2 - cx1);
   var b = cy1 - a * cx1;
   return b;
 }
 
-//fonction pour trouver l'angle de la fonction
+//fonction pour trouver l'angle d'une fonction lineaire
+//a partir de 2 coordonnees
 function trouverAngle(cx1, cy1, cx2, cy2) {
   var coteX = Math.abs(cx1 - cx2);
   var coteY = Math.abs(cy1 - cy2);
   return (Math.atan(coteX / coteY) * 180) / Math.PI;
-}
-
-//code pour rajouter un hover aux points
-
-// ici je vais voir détecter si la souris survol sur le canvas ou non
-canvas.addEventListener("mousemove", (event) => {
-  const pos = {
-    x: event.clientX - canvas.offsetLeft,
-    y: event.clientY - canvas.offsetTop,
-  };
-
-  // le tout est à false pour avoir une souri normale
-  let survol = false;
-  // je vais passer à travers toute la liste de points pour verfifier si je suis dessus
-  // faeque, si je suis dessus, le survol devient true
-  listePoints.forEach((point) => {
-    if (intersecte(pos, point)) {
-      survol = true;
-    }
-  });
-
-  // la petite main, sionon c'est en default
-  canvas.style.cursor = survol ? "pointer" : "default";
-});
+} 
