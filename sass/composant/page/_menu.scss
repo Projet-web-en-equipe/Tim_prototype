@@ -75,7 +75,7 @@ header nav ul {
 
 header nav ul li {
   list-style: none; // j'enlève les esti de portes laides.
-  border: 1px solid yellow;
+  //border: 1px solid yellow;
   width: 100%;
   height: auto;
   display: flex;
@@ -95,4 +95,9 @@ header nav ul li img {
   // border: 1px solid white;
   height: 35px; /* Set a consistent height for all images */
   width: auto;
+}
+
+.fa-duotone.fa-ice-cream {
+  --fa-primary-color: #ffd18f; /* Cone color */
+  --fa-secondary-color: #ffd2e1; /* Ice cream (pink) */
 }
