@@ -10,7 +10,7 @@ var listePoints = [
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
     tag: "Projets",
-    lien: "/maquette.html"
+    lien: "/category/cours"  // remplace par l'URL de la catégorie Projets
   },
   {
     x: 650,
@@ -18,7 +18,7 @@ var listePoints = [
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
     tag: "Cours",
-    lien: "ca pue"
+    lien: "/category/cours"  // remplace par l'URL de la catégorie Cours
   },
   {
     x: 600,
@@ -26,7 +26,7 @@ var listePoints = [
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
     tag: "Profs",
-    lien: "/maquette.html"
+    lien: "/category/cours"  // remplace par l'URL de la catégorie Profs
   },
   {
     x: 400,
@@ -34,7 +34,7 @@ var listePoints = [
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
     tag: "Emplois",
-    lien: "/maquette.html"
+    lien: "/category/cours"  // remplace par l'URL de la catégorie Emplois
   },
   {
     x: 150,
@@ -42,7 +42,7 @@ var listePoints = [
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
     tag: "Évènements",
-    lien: "/maquette.html"
+    lien: "/category/cours"  // remplace par l'URL de la catégorie Évènements
   },
   {
     x: 250,
@@ -50,7 +50,7 @@ var listePoints = [
     rayon: 13,
     couleur: "rgb(255, 0, 0)",
     tag: "Vie étudiante",
-    lien: "/maquette.html"
+    lien: "/category/cours"  // remplace par l'URL de la catégorie Vie étudiante
   },
 ];
 //variable du personnage
