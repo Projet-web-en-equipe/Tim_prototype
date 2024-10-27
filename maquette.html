@@ -1,199 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maquette | page</title>
-    <link rel="stylesheet" href="normalize.css">
-    <link rel="stylesheet" href="style.css">
-</head>
+    <!-- Favicon links pour chaque resolution... on dirait qu'y sont stretched... -->
+    <link
+      rel="icon"
+      href="medias/favicon16px.png"
+      sizes="16x16"
+      type="image/png"
+    />
+    <link
+      rel="icon"
+      href="medias/favicon32px.png"
+      sizes="32x32"
+      type="image/png"
+    />
+    <link
+      rel="icon"
+      href="medias/favicon48px.png"
+      sizes="48x48"
+      type="image/png"
+    />
 
-<body>
-    <div id="burger">
+    <!--Rajout des icônes Google -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=visibility"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=close"
+    />
+
+    <script
+      src="https://kit.fontawesome.com/4f23b00084.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/hez6hsh.css" />
+    <title>Techniques d'intégration Multimédia Maisonneuve</title>
+    <!--Rajout Polices adobe -->
+    <link rel="stylesheet" href="https://use.typekit.net/nih6pil.css" />
+  </head>
+
+ 
+   
+  <body id="main">
+    <header>
+      <div id="burger">
         <div class="barre"></div>
         <div class="barre"></div>
         <div class="barre"></div>
-    </div>
-    <div id="logo">
+      </div>
+
+      <div id="logo">
         <a href="index.html">
-            <img src="medias/TIMLogo.png" alt="TIMLogo">
+          <img src="medias/timMobile.png" alt="TIM Logo" />
         </a>
-    </div>
-    <header id="nav-menu">
-        <section>
-            <nav>
-                <ul>
-                    <li><a href="maquette.html">Projets</a></li>
-                    <li><a href="maquette.html">Cours</a></li>
-                    <li><a href="maquette.html">Prof</a></li>
-                    <li><a href="maquette.html">Évènement</a></li>
-                    <li><a href="maquette.html">Emplois</a></li>
-                    <li><a href="maquette.html">Vie Étudiante</a></li>
-                </ul>
-            </nav>
-        </section>
+      </div>
+
+      <section id="nav-menu">
+        <nav>
+          <ul>
+            <li>
+              <a href="maquette.html">
+                Projets
+                <i class="fa-duotone fa-ice-cream"></i>
+              </a>
+              <!-- <img class="icone-nav" src="medias/Cours.png" /> -->
+            </li>
+            <li>
+              <a href="maquette.html"
+                >Cours
+                <i
+                  class="fa-duotone fa-solid fa-ferris-wheel"
+                  style="
+                    --fa-primary-color: #ff5733;
+                    --fa-secondary-color: #3333ff;
+                  "
+                ></i>
+              </a>
+            </li>
+            <li>
+              <a href="maquette.html"
+                >Profs
+                <i
+                  class="fa-duotone fa-solid fa-lighthouse"
+                  style="
+                    --fa-primary-color: #ff5733;
+                    --fa-secondary-color: #3333ff;
+                  "
+                ></i
+              ></a>
+              <!-- <img class="icone-nav" src="medias/Profs.png" /> -->
+            </li>
+            <li>
+              <a href="maquette.html"
+                >Évènements
+                <i
+                  class="fa-duotone fa-calendar-days"
+                  style="
+                    --fa-primary-color: #ff5733;
+                    --fa-secondary-color: #3333ff;
+                  "
+                ></i>
+              </a>
+            </li>
+            <li>
+              <a href="maquette.html"
+                >Futur
+                <i
+                  class="fa-duotone fa-solid fa-briefcase-arrow-right"
+                  style="
+                    --fa-primary-color: #ff5733;
+                    --fa-secondary-color: #3333ff;
+                  "
+                ></i
+              ></a>
+              <!-- <img class="icone-nav" src="medias/Emplois.png" /> -->
+            </li>
+            <li>
+              <a href="maquette.html"
+                >Vie Étudiante
+                <i
+                  class="fa-duotone fa-solid fa-campfire"
+                  style="
+                    --fa-primary-color: #ff5733;
+                    --fa-secondary-color: #3333ff;
+                  "
+                ></i
+              ></a>
+
+              <!-- <img class="icone-nav" src="medias/vieEtudiante.png" /> -->
+            </li>
+          </ul>
+        </nav>
+      </section>
     </header>
     <main>
-        <h1 id="titre">Cours</h1>
-        <div class="content-wrapper">
-            <section id="carrousel">
-                <div class="banniere">
-                    <img src="./medias/placeholder.png" alt="placeholder">
-                    <h2>PlaceHolder</h2>
-                </div>
-                <div class="banniere">
-                    <img src="./medias/placeholder.png" alt="placeholder">
-                    <h2>PlaceHolder</h2>
-                </div>
-                <div class="banniere">
-                    <img src="./medias/placeholder.png" alt="placeholder">
-                    <h2>PlaceHolder</h2>
-                </div>
-                <div class="banniere">
-                    <img src="./medias/placeholder.png" alt="placeholder">
-                    <h2>PlaceHolder</h2>
-                </div>
-                <div class="banniere">
-                    <img src="./medias/placeholder.png" alt="placeholder">
-                    <h2>PlaceHolder</h2>
-                </div>
-                <div class="banniere">
-                    <img src="./medias/placeholder.png" alt="placeholder">
-                    <h2>PlaceHolder</h2>
-                </div>
+      <h1 id="titre">Cours</h1>
+      <div class="content-wrapper">
+        <section id="carrousel">
+          <div class="banniere">
+            <img src="./medias/placeholder.png" alt="placeholder" />
+            <h2>PlaceHolder</h2>
+          </div>
+          <div class="banniere">
+            <img src="./medias/placeholder.png" alt="placeholder" />
+            <h2>PlaceHolder</h2>
+          </div>
+          <div class="banniere">
+            <img src="./medias/placeholder.png" alt="placeholder" />
+            <h2>PlaceHolder</h2>
+          </div>
+          <div class="banniere">
+            <img src="./medias/placeholder.png" alt="placeholder" />
+            <h2>PlaceHolder</h2>
+          </div>
+          <div class="banniere">
+            <img src="./medias/placeholder.png" alt="placeholder" />
+            <h2>PlaceHolder</h2>
+          </div>
+          <div class="banniere">
+            <img src="./medias/placeholder.png" alt="placeholder" />
+            <h2>PlaceHolder</h2>
+          </div>
+        </section>
+        <section id="info">
+          <button id="close-info" class="close-btn">X</button>
+          <h1>582-4C2 Gestion de projets multimédias (45h)</h1>
+          <img src="./medias/placeholder.png" alt="placeholder" />
 
-            </section>
-            <section id="info">
-                <button id="close-info" class="close-btn">X</button>
-                <h1>Interfaces Web réactives et animées</h1>
-                <img src="./medias/placeholder.png" alt="placeholder">
+          <div class="text">
+            <p>
+                Ce cours initie l'étudiant aux rudiments de la gestion d’un projet multimédia. L’étudiant apprend à analyser les besoins liés à la réalisation du projet en termes de ressources humaines, matérielles et budgétaires. À cet effet, il est initié aux méthodes de gestion classiques, ainsi qu’aux méthodes dites « agiles », qu’il sera appelé à utiliser dans le cadre du cours « 582-5W5 : Projet Web en équipe ».
+                L'étudiant est amené à exploiter les fonctions d’un logiciel de gestion de projet en vue d’établir un échéancier de production et d’en faire le suivi. Le cours couvre également les aspects légaux relatifs à la réalisation d’un projet (droits d’auteurs, contrats, etc.). Enfin, l’étudiant développe sa capacité à écrire ou à répondre à un cahier des charges ainsi qu’à rédiger une offre de services professionnels.
+            </p>
+            <p>
+              À la fin de ce cours, vous serez en mesure de produire une
+              application Web monopage à interface utilisateur « réactive » en
+              intégrant une base de données dite en « temps réel » et à la
+              déployer dans un environnement « nuagique » moderne. Vous
+              apprendrez à programmer avec des technologies de pointe JavaScript
+              (React, npm, Vite), et à utiliser un environnement de
+              développement nuagique (Firebase, GitHub).
+            </p>
+            <p>
+                pondération : 2-1-2
+ 
+                unité : 1,67 
+                 
+                préalable : Aucun préalable
+            </p>
+          </div>
 
-                <div class="text">
-                    <p>Dans ce cours, l'étudiant ayant un intérêt plus marqué pour la programmation a la possibilité
-                        d'approfondir les acquis des cours de la séquence Web en s'initiant à des technologies
-                        permettant de
-                        réaliser des applications riches du côté du client.
-                    </p>
-                    <p>
-                        À la fin de ce cours, vous serez en mesure de produire une application Web monopage à interface
-                        utilisateur « réactive » en intégrant une base de données dite en « temps réel » et à la
-                        déployer
-                        dans
-                        un environnement « nuagique » moderne. Vous apprendrez à programmer avec des technologies de
-                        pointe
-                        JavaScript (React, npm, Vite), et à utiliser un environnement de développement nuagique
-                        (Firebase,
-                        GitHub).
-                    </p>
-                    <p>Dans ce cours, l'étudiant ayant un intérêt plus marqué pour la programmation a la possibilité
-                        d'approfondir les acquis des cours de la séquence Web en s'initiant à des technologies
-                        permettant de
-                        réaliser des applications riches du côté du client.
-                    </p>
-                    <p>
-                        À la fin de ce cours, vous serez en mesure de produire une application Web monopage à interface
-                        utilisateur « réactive » en intégrant une base de données dite en « temps réel » et à la
-                        déployer
-                        dans
-                        un environnement « nuagique » moderne. Vous apprendrez à programmer avec des technologies de
-                        pointe
-                        JavaScript (React, npm, Vite), et à utiliser un environnement de développement nuagique
-                        (Firebase,
-                        GitHub).
-                    </p>
-                    <p>Dans ce cours, l'étudiant ayant un intérêt plus marqué pour la programmation a la possibilité
-                        d'approfondir les acquis des cours de la séquence Web en s'initiant à des technologies
-                        permettant de
-                        réaliser des applications riches du côté du client.
-                    </p>
-                    <p>
-                        À la fin de ce cours, vous serez en mesure de produire une application Web monopage à interface
-                        utilisateur « réactive » en intégrant une base de données dite en « temps réel » et à la
-                        déployer
-                        dans
-                        un environnement « nuagique » moderne. Vous apprendrez à programmer avec des technologies de
-                        pointe
-                        JavaScript (React, npm, Vite), et à utiliser un environnement de développement nuagique
-                        (Firebase,
-                        GitHub).
-                    </p>
-                    <p>Dans ce cours, l'étudiant ayant un intérêt plus marqué pour la programmation a la possibilité
-                        d'approfondir les acquis des cours de la séquence Web en s'initiant à des technologies
-                        permettant de
-                        réaliser des applications riches du côté du client.
-                    </p>
-                    <p>
-                        À la fin de ce cours, vous serez en mesure de produire une application Web monopage à interface
-                        utilisateur « réactive » en intégrant une base de données dite en « temps réel » et à la
-                        déployer
-                        dans
-                        un environnement « nuagique » moderne. Vous apprendrez à programmer avec des technologies de
-                        pointe
-                        JavaScript (React, npm, Vite), et à utiliser un environnement de développement nuagique
-                        (Firebase,
-                        GitHub).
-                    </p>
-                    <p>Dans ce cours, l'étudiant ayant un intérêt plus marqué pour la programmation a la possibilité
-                        d'approfondir les acquis des cours de la séquence Web en s'initiant à des technologies
-                        permettant de
-                        réaliser des applications riches du côté du client.
-                    </p>
-                    <p>
-                        À la fin de ce cours, vous serez en mesure de produire une application Web monopage à interface
-                        utilisateur « réactive » en intégrant une base de données dite en « temps réel » et à la
-                        déployer
-                        dans
-                        un environnement « nuagique » moderne. Vous apprendrez à programmer avec des technologies de
-                        pointe
-                        JavaScript (React, npm, Vite), et à utiliser un environnement de développement nuagique
-                        (Firebase,
-                        GitHub).
-                    </p>
-                    <p>Dans ce cours, l'étudiant ayant un intérêt plus marqué pour la programmation a la possibilité
-                        d'approfondir les acquis des cours de la séquence Web en s'initiant à des technologies
-                        permettant de
-                        réaliser des applications riches du côté du client.
-                    </p>
-                    <p>
-                        À la fin de ce cours, vous serez en mesure de produire une application Web monopage à interface
-                        utilisateur « réactive » en intégrant une base de données dite en « temps réel » et à la
-                        déployer
-                        dans
-                        un environnement « nuagique » moderne. Vous apprendrez à programmer avec des technologies de
-                        pointe
-                        JavaScript (React, npm, Vite), et à utiliser un environnement de développement nuagique
-                        (Firebase,
-                        GitHub).
-                    </p>
-                    <p>Dans ce cours, l'étudiant ayant un intérêt plus marqué pour la programmation a la possibilité
-                        d'approfondir les acquis des cours de la séquence Web en s'initiant à des technologies
-                        permettant de
-                        réaliser des applications riches du côté du client.
-                    </p>
-                    <p>
-                        À la fin de ce cours, vous serez en mesure de produire une application Web monopage à interface
-                        utilisateur « réactive » en intégrant une base de données dite en « temps réel » et à la
-                        déployer
-                        dans
-                        un environnement « nuagique » moderne. Vous apprendrez à programmer avec des technologies de
-                        pointe
-                        JavaScript (React, npm, Vite), et à utiliser un environnement de développement nuagique
-                        (Firebase,
-                        GitHub).
-                    </p>
-                </div>
-            </section>
-        </div>
+          
+        </section>
+      </div>
     </main>
     <input type="checkbox" name="checkboxFooter" id="checkFoot" />
     <label for="checkFoot">
-        <footer>
-            <h1>Footer</h1>
-        </footer>
-    </label>
-</body>
-<!-- <script src="js/codeAccueil.js"></script> -->
-<script src="js/animation.js"></script>
+      <footer>
+        <div class="conteneurSousTitre">
+          <span class="material-symbols-rounded"> close </span>
+          <h3>
+            <span class="material-symbols-outlined"> visibility </span> À PROPOS
+          </h3>
+        </div>
 
+        <div class="contenuFooter">
+          <div class="liens">
+            <p>3800 rue Sherbrooke Est</p>
+            <p>
+              <a href="https://www.cmaisonneuve.qc.ca/">Site web du Collège</a>
+            </p>
+          </div>
+          <div class="sociaux">
+            <i class="fa-brands fa-instagram"></i
+            ><i class="fa-brands fa-behance"></i
+            ><i class="fa-brands fa-linkedin"></i>
+          </div>
+          <div class="contact">
+            <p>page contact?</p>
+          </div>
+          <div class="equipe">
+            <p>
+              Site web réalisé Par Camilia El moustarih, Tony Ton, Lohan
+              Moutquin, Lenny Tran, Alejandro yanez
+            </p>
+          </div>
+        </div>
+      </footer>
+  </body>
+  <!-- <script src="js/codeAccueil.js"></script> -->
+  <script src="js/animation.js"></script>
+  <script src="js/fermetureMenus.js"></script>
 </html>
