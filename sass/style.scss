@@ -21,17 +21,21 @@ Ce thème a été développé dans le cadre du cours de Projet Web en équipe 5w
 /* Base */
 @import "base/h";
 @import "base/fond";
-@import "base/main";
 
-/*Composant*/
+/*Composants page*/
 @import "composant/page/burger";
 @import "composant/page/logo";
 @import "composant/page/menu";
 @import "composant/page/carrousel";
 @import "composant/page/info";
 
-/*elements*/
-@import "elements/footer";
+/*Composants principaux*/
+@import "composant/principal/footer";
+@import "composant/principal/main";
+@import "composant/principal/header";
+@import "composant/principal/accueil";
+@import "composant/principal/animIntro";
 
-@import "accueil";
-@import "composant/principal/anim";
+/*couleurs*/
+@import "variables/paletteCouleurs";
+@import "variables/polices";
