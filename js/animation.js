@@ -11,7 +11,7 @@ function showInfo() {
     infoSection.style.display = 'block'; // Assurez-vous que la section est visible
     document.body.style.overflow = 'hidden'; // Empêche le body de défiler
 }
-
+//LOL
 // Fonction pour cacher la section info après l'animation
 function hideInfo() {
     infoSection.classList.remove('show');
